@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  font-family:"Geist Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif
+}
+.small-font {
+  font-size: 14px;
+}
+.medium-font {
+  font-size: 16px;
+}
+.soft-bold{
+  font-weight: 300;
+}
+.medium-bold{
+  font-weight: 600;
+}
+.high-bold{
+  font-weight: 900;
+}
+.separator-bottom{
+  border-bottom: 0.1em solid hsl(var(--border)) ;
+}
+.round-price{
+  border: solid 0.1em;
+  margin-right: 0.5em;
+  padding-left: 0.2em;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.text-area-rows{
+  display: flow;
+  text-align: right;
+}
+.pos-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.height-row{
+  height: 60px;
+}
+.with-row{
+  width: 64%;
+}
+.with-row-price{
+  width: 19%;
+}
+.width-price-value{
+  width: 51%;
+}
+.width-discount-value{
+  width: 42%;
+}
+.-right-12 {
+    right: -3rem;
+}
+.-left-12 {
+    left: -3rem;
+}
+.w-bottom-header{
+  width: 30%;
+}
+.grid-info{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.height-info-row{
+  height: 60px;
+}
+.width-info-title{
+  width: 45%;
+}
+.width-info-price, .width-info-bottom{
+  width: 20%;
+}
+.gap-info{
+  gap: 1rem;
+}
+.pl-row-search{
+  padding-left: 1rem;
+}
+.grid-search{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.width-icon-search{
+    width: 4%;
+}
+.width-foot{
+  width: 50%;
+}
+.w-plan-check{
+  width: 6%;
+}
+.height-row-search{
+  height: 150px;
+}
+
+
+@media (max-width:1150px) {
+  .small-font, .text-gray-500 {
+    font-size: 13px;
+  }
+  .medium-font {
+    font-size: 14px;
+  }
+}
+
+@media (max-width:950px) {
+  .small-font, .text-gray-500{
+    font-size: 11px;
+  }
+  .medium-font, .text-green-600, .text-black-600  {
+    font-size: 12px;
+  }
+  .full-width-header{
+    colspan: 1;
+  }
+  .height-row, .height-info-row{
+    height: 70px;
+  }
+  .with-row{
+    width: 60%;
+  }
+  .with-row-price{
+    width: 20%;
+  }
+  .round-price{
+    font-size: 10px;
+  }
+  .width-price-value,.width-discount-value{
+    width: 55%;
+  }
+  .-right-12 {
+    right: -1rem;
+  }
+  .-left-12 {
+    left: -1rem;
+  }
+  .w-bottom-header{
+    width: 50%;
+  }
+  .grid-info{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .width-info-title{
+    width: 38%;
+  }  
+  .width-info-price{
+    width: 22%;
+  }
+  .width-info-bottom{
+    width: 25%;
+  }
+  .gap-info{
+    gap: 0rem;
+  }
+  .pl-row-search{
+    padding-left: 0.25rem;
+  }
+  .grid-search{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .width-icon-search{
+    width: 9%;
+  }
+  .width-foot{
+    width: 100%;
+  }
+  .w-plan-check{
+    width: 8%; 
+  }
+  .height-row-search{
+  height: 135px;
+}
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 191 41% 21%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 29 74% 42%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
