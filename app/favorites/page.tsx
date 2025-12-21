@@ -1,10 +1,10 @@
-import { getUserFavoritesDTO } from "@/lib/deals-dal"
-import { getCurrentUser } from "@/lib/auth"
+//import { getUserFavoritesDTO } from "@/lib/deals-dal"
+//import { getCurrentUser } from "@/lib/auth"
 import GameDealCard from "@/components/game-deal-card"
 import Navigation from "@/components/navigation"
 import { redirect } from "next/navigation"
 
-export default async function FavoritesPage() {
+/*export default async function FavoritesPage() {
   const user = await getCurrentUser()
 
   if (!user) {
@@ -38,4 +38,4 @@ export default async function FavoritesPage() {
       </main>
     </div>
   )
-}
+}*/
