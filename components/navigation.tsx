@@ -25,9 +25,7 @@ export default async function Navigation() {
             <Link href="/search" className="flex items-center space-x-2 w-[70%]">
               <Button className="medium-font w-[100%] bg-accent">Buscar videojuegos</Button>
             </Link>
-            <Link href="/planes" className="flex items-center space-x-1 w-[30%]">
-              <Button className="medium-font w-[100%] bg-accent">Planes</Button>
-            </Link>
+            
           </div>
         </div>
       </div>
