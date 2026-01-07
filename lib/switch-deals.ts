@@ -161,7 +161,7 @@ export async function getNewSwitchOneDTO(): Promise<GameDealDTO[]> {
 
 export async function getBestSwitchOneDTO(): Promise<GameDealDTO[]> {
     const client = await pool.connect();
-    const {rows}  = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, '+
+    const {rows}  = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, j.nombre, '+
         'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, '+
         'c."logoConsola" as logo_console, t."logoTienda" as logo_store, t."idTienda" as store_id '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
@@ -176,7 +176,7 @@ export async function getBestSwitchOneDTO(): Promise<GameDealDTO[]> {
         }
             gamesMap.set(row.game_id+'_'+row.store_id, {
                 id: row.game_id,
-                title: row.title,
+                title: row.title ? row.title : row.nombre,
                 description: row.description,
                 genre: row.genre,
                 platform: row.platform,
@@ -237,7 +237,7 @@ export async function getOffertsDTO(juegoId: Number): Promise<StoreDTO[]> {
         }
     }
 
-    const query2 = 'SELECT t."idTienda" as store_id, t."logoTienda" as logo_store,j.nombrereal as title, t."nombreTienda" as store_name, '+
+    const query2 = 'SELECT t."idTienda" as store_id, t."logoTienda" as logo_store,j.nombrereal as title, t."nombreTienda" as store_name, j.nombre, '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"<>$1 and j."pkJuegoMatch"=$2 and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
@@ -255,7 +255,7 @@ export async function getOffertsDTO(juegoId: Number): Promise<StoreDTO[]> {
         if (!gamesMap.has(row.store_id)) {
             gamesMap.set(row.store_id, {
                 id: row.store_id,
-                title: row.title,
+                title: row.title ? row.title : row.nombre,
                 nombreStore: row.store_name,
                 logoStore: row.logo_store,
                 deals: [{

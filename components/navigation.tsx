@@ -23,7 +23,7 @@ export default async function Navigation() {
 
           <div className="flex items-center space-x-4 w-bottom-header">
             <Link href="/search" className="flex items-center space-x-2 w-[70%]">
-              <Button className="medium-font w-[100%] bg-accent">Buscar videojuegos</Button>
+              <Button className="medium-font w-[100%] bg-accent">Buscar Videojuegos</Button>
             </Link>
             
           </div>

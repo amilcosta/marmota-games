@@ -313,9 +313,24 @@ export async function getPlatforms(){
   const tiendasMap = new Map<string, PlaformDTO>()
   
   for (const row of rows) {
+    let consola='';
+    switch (row.platform){
+      case 'switch1':
+        consola='Nintendo Switch 1';
+        break;
+      case 'switch2':
+        consola='Nintendo Switch 2';
+        break;
+      case 'ps4':
+        consola= 'PlayStation 4';
+        break;
+      case 'ps5':
+        consola = 'PlayStation 5';
+        break;    
+    }
     tiendasMap.set(row.id_platform, {
         id: row.id_platform,
-        nombre: row.platform,
+        nombre: consola,
     })
   }
 
