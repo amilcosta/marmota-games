@@ -157,7 +157,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
 
   const gamesMap = new Map<string, GameDealDTO>();
   const {rows} = await client.query(query, values);
-  console.log("rows: ", rows.length);
+
   for (const row of rows) {
       const valueId = [row.idJuego];
       const queryGeneros = 'SELECT g."nombreGenero" as genre '+
@@ -200,8 +200,6 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
     }
     client.release();
     //pool.end();
-
-    console.log("resulmao:" ,gamesMap.values())
     
     return Array.from(gamesMap.values())
 }

@@ -63,7 +63,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
   // `
   
   const client = await pool.connect();
-  const { rows } = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, '+
+  const { rows } = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, j.nombre, '+
     'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, '+
     'pt."enlaceTienda" as deal_url '+
     'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
@@ -86,7 +86,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
 
       gamesMap.set(row.game_id, {
         id: row.game_id,
-        title: row.title,
+        title: row.title ? row.title : row.nombre,
         description: row.description,
         genre: row.genre,
         platform: row.platform,

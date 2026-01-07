@@ -27,7 +27,7 @@ export default async function HomePage() {
           </div>
         ) : (
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Juegos mas populares</h1>
+            <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Juegos más Populares</h1>
             <Carousel opts={{ align: "start", }} className="w-full">
               <CarouselContent>
                 {gameDeals.map((game) => (

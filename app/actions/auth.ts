@@ -24,7 +24,6 @@ export async function signUpActionOld(formData):Promise<RespuestaDTO> {
     const data = Object.fromEntries(formData);
     //const email = formData.get("email") as string;
     const email = data.email;
-    console.log("a guardar: ", email);
     //const password = formData.get("password") as string
 
     //if (password.length < 6) {
@@ -32,10 +31,10 @@ export async function signUpActionOld(formData):Promise<RespuestaDTO> {
     //}
 
     //const resul = await signUp(email);
-    //console.log("----",resul)
+
     
     //const respuesta: RespuestaDTO = {message: resul?.message ? resul.message : '', code: resul?.code ? resul.code : 200 };
-    //console.log("----",respuesta)
+
     //redirect("/")
 
     const respuesta: RespuestaDTO = {message: 'Invalid', code: 400};

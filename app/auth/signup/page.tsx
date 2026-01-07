@@ -21,7 +21,7 @@ export default function SignUpPage() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const result = await signUpAction(formData);
-    console.log("resultado resp: ",result)
+    
 
     if (result.code==400) {
       setModalMessage(result.message);

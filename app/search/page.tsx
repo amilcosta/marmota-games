@@ -33,8 +33,8 @@ export default async function GameSearch({searchParams}:{
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Consultar por videojuego</h1>
-                    <Search placeholder="Buscar juego" />
+                    <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Consultar por Videojuego</h1>
+                    <Search placeholder="Buscar Juego" />
                 </div>
                 <div className="grid grid-search md:grid-cols-4 lg:grid-cols-4 gap-info">
                     
@@ -102,15 +102,15 @@ export default async function GameSearch({searchParams}:{
                                         { priceval=='40-100' || priceval=='' ? (
                                         <div className="w-[100%] float-left">
                                             { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">mas de $40.000</a>
-                                            : <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">mas de $40.000</a>
+                                            <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">más de $40.000</a>
+                                            : <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">más de $40.000</a>
                                             }
                                         </div>
                                         ):""}
 
                                         { priceval!='' ? (
                                         <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&t="+shopval} className="hover:text-accent"> &larr; limpiar filtro  </a>
+                                            <a href={"?query="+query+"&t="+shopval} className="hover:text-accent"> &larr; Limpiar Filtro  </a>
                                         </div>
                                         ):""}
                                     </div>
@@ -129,7 +129,7 @@ export default async function GameSearch({searchParams}:{
                                         : "" ))}
                                         { shopval!='' ? (
                                         <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&precio="+priceval} className="hover:text-accent"> &larr; limpiar filtro </a>
+                                            <a href={"?query="+query+"&precio="+priceval} className="hover:text-accent"> &larr; Limpiar Filtro </a>
                                         </div>
                                         ):""}
                                     </div>
@@ -149,7 +149,7 @@ export default async function GameSearch({searchParams}:{
                                         : "" ))}
                                         { platform!=0 ? (
                                         <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&precio="+priceval+"&t="+shopval} className="hover:text-accent"> &larr; limpiar filtro </a>
+                                            <a href={"?query="+query+"&precio="+priceval+"&t="+shopval} className="hover:text-accent"> &larr; Limpiar Filtro </a>
                                         </div>
                                         ):""}
                                     </div>
