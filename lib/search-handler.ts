@@ -82,14 +82,14 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and t."idTienda"=$4 and c."idConsola"=$5 '+
-        'and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $6 OFFSET $7';
+        'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $6 OFFSET $7';
       }else{
         values.push(10);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
-        'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
+        'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" and pt.activo=1 '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and t."idTienda"=$4 and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $5 OFFSET $6';
       }
     }else if(platform>0){
@@ -101,7 +101,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
       'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and c."idConsola"=$4 '+
-      'and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $5 OFFSET $6';
+      'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $5 OFFSET $6';
     }else{
       values.push(10);
       values.push(offset);
@@ -109,7 +109,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
-      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $4 OFFSET $5';
+      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.activo=1 and pt.precio>=$2 and pt.precio<=$3 and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $4 OFFSET $5';
     }
   }else{
     if(tienda>0){
@@ -123,14 +123,14 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 and c."idConsola"=$3 '+
-        'and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $4 OFFSET $5';
+        'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $4 OFFSET $5';
       }else{
         values.push(10);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
-        'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
+        'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" and pt.activo=1 '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 and pt."fkConsola"=c."idConsola" order by pt.precio asc limit $3 OFFSET $4';
       }
     }else if(platform>0){
@@ -141,7 +141,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" and c."idConsola"=$2 '+
-      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" limit $3 OFFSET $4';
+      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" and pt.activo=1 limit $3 OFFSET $4';
     }else{
       values.push(10);
       values.push(offset);
@@ -149,7 +149,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
-      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" limit $2 OFFSET $3';
+      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" and pt.activo=1 limit $2 OFFSET $3';
     }
   }
   
@@ -238,13 +238,13 @@ export async function getTotalFiltro(juegoName: string, prices: string[], tienda
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and t."idTienda"=$4 '+
-        'and c."idConsola"=$5 and pt."fkConsola"=c."idConsola" ';
+        'and c."idConsola"=$5 and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
       }else{
         query =  'select count(j."idJuego") as cantidad '+
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and t."idTienda"=$4 '+
-        'and pt."fkConsola"=c."idConsola" ';
+        'and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
       }
     }else if(platform>0){
        values.push(platform)
@@ -252,13 +252,13 @@ export async function getTotalFiltro(juegoName: string, prices: string[], tienda
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
       'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 '+
-      'and c."idConsola"=$4 and pt."fkConsola"=c."idConsola" ';
+      'and c."idConsola"=$4 and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
     }else{
       query =  'select count(j."idJuego") as cantidad  '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
       'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 '+
-      'and pt."fkConsola"=c."idConsola" ';
+      'and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
     }
   }else{
     if(tienda>0){
@@ -269,24 +269,24 @@ export async function getTotalFiltro(juegoName: string, prices: string[], tienda
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 '+
-        'and c."idConsola"=$3 and pt."fkConsola"=c."idConsola" ';
+        'and c."idConsola"=$3 and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
       }else{
         query =  'select count(j."idJuego") as cantidad '+
         'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
         'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
-        'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 and pt."fkConsola"=c."idConsola" ';
+        'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
       }
     }else if(platform>0){
       values.push(platform)
       query =  'select count(j."idJuego") as cantidad  '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
-      'and c."idConsola"=$2 and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" ';
+      'and c."idConsola"=$2 and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
     }else{
       query =  'select count(j."idJuego") as cantidad  '+
       'from "JUEGO" j, "DETALLEJUEGO" dj, "CONSOLA" c, "PRECIOTIENDA" pt, "TIENDA" t '+
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" '+
-      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" ';
+      'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" and pt.activo=1 ';
     }
   }
 
