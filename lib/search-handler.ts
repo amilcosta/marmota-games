@@ -176,7 +176,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
 
       gamesMap.set(row.idJuego+'_'+row.store_id+'_'+row.idconsola , {
           id: row.idJuego,
-          title: row.nombrereal,
+          title: row.nombrereal ? row.nombrereal : row.nombre,
           description: row.description,
           genre: listaGeneros,
           platform: row.platform,
