@@ -43,6 +43,7 @@ export default async function Switch2Page() {
                 </Carousel>
             </div>
             )}
+            { switchDeals.length != 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div>
                 <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Nuevos Descuentos</h1>
@@ -106,6 +107,7 @@ export default async function Switch2Page() {
                 </Accordion>
                 </div>
             </div>
+            ) : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"></div>}
         </main>
         </div>
     )

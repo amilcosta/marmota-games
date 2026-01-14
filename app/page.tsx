@@ -1,6 +1,7 @@
 import { getGameDealsDTO, getNewDealsDTO, getBestDealsDTO } from "@/lib/deals-dal"
 import GameDealCard from "@/components/game-deal-card"
 import Navigation from "@/components/navigation";
+import Comparador from "@/components/comparador";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 import Link from "next/link";

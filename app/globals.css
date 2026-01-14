@@ -12,6 +12,9 @@ body {
 .medium-font {
   font-size: 16px;
 }
+.high-font {
+  font-size: 18px;
+}
 .soft-bold{
   font-weight: 300;
 }
@@ -97,6 +100,38 @@ body {
 }
 .height-row-search{
   height: 150px;
+}
+.vsSeparator{
+  border-left: 1px solid #bebebe;
+  bottom: 0;
+  /*height: 100%;*/
+  left: 50%;
+  /*position: absolute;*/
+  transition: left .15s;
+}
+.vsSeparator span{
+  background-color: #fff;
+    border: 1px solid #bebebe;
+    border-radius: 15px;
+    color: #616161;
+    font-weight: 700;
+    height: 30px;
+    /*left: 48%;
+    line-height: 29px;*/
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 30px;
+    margin-left: -15px;
+}
+.compare-down{
+  position: absolute;
+  z-index: 1000;
+  background-color: #fffffff2;
+}
+.x-mark{
+  position: relative;
+  right: 16px;
 }
 
 

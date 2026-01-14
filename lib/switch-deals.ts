@@ -287,7 +287,7 @@ export async function getInfoGameStoreDTO(juegoId: Number): Promise<HistoryStore
         for(const row of getmatch.rows){
             const values2 = [row.match];
             const queryids = 'SELECT j."idJuego" as id from "JUEGO" j, "PRECIOTIENDA" p where j."pkJuegoMatch"=$1 '+
-            'and j."idJuego"=p."fkJuego" and p.activo=1 ';
+            'and j."idJuego"=p."fkJuego" and p.activo=1 and p."fkConsola"=1 ';
             const idsjuegos = await client.query(queryids,values2);
 
             let idsadd: number[]=[];
