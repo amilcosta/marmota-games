@@ -238,7 +238,7 @@ export async function getOffertsPs4DTO(juegoId: Number): Promise<StoreDTO[]> {
     }
 
     const query2 = 'SELECT t."idTienda" as store_id, t."logoTienda" as logo_store,j.nombrereal as title, t."nombreTienda" as store_name, '+
-        'pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url '+
+        'pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url, j.nombre '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"<>$1 and j."pkJuegoMatch"=$2 and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
         'and j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and c."idConsola"=4 '+
@@ -255,7 +255,7 @@ export async function getOffertsPs4DTO(juegoId: Number): Promise<StoreDTO[]> {
         if (!gamesMap.has(row.store_id)) {
             gamesMap.set(row.store_id, {
                 id: row.store_id,
-                title: row.title,
+                title: row.title ? row.title : row.nombre,
                 nombreStore: row.store_name,
                 logoStore: row.logo_store,
                 deals: [{
