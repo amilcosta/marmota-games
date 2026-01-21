@@ -68,7 +68,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
     'pt."enlaceTienda" as deal_url '+
     'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
     'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-    'and pt.activo=1 limit 5'
+    'and pt.activo=1 and pt."fkConsola"=c."idConsola" limit 5'
   );
   
 
@@ -213,7 +213,7 @@ export async function getNewDealsDTO(): Promise<GameDealDTO[]> {
         'c."logoConsola" as logo_console, t."logoTienda" as logo_store, t."idTienda" as store_id, c."idConsola" as id_consola '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-        'and pt.precio<=pt."precioViejo" and pt.activo=1 order by pt.fecha desc, precio asc limit 10');
+        'and pt.precio<=pt."precioViejo" and pt.activo=1 and pt."fkConsola"=c."idConsola" order by pt.fecha desc, precio asc limit 10');
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {
       let discount = parseFloat((100-(row.sale_price*100)/row.original_price).toFixed(1));
@@ -257,7 +257,7 @@ export async function getBestDealsDTO(): Promise<GameDealDTO[]> {
         'c."logoConsola" as logo_console, t."logoTienda" as logo_store, t."idTienda" as store_id, c."idConsola" as id_consola '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-        'and pt.precio<=pt."precioViejo" and pt.activo=1 order by sale_price asc limit 10');
+        'and pt.precio<=pt."precioViejo" and pt.activo=1 and pt."fkConsola"=c."idConsola" order by sale_price asc limit 10');
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {
       let discount = parseFloat((100-(row.sale_price*100)/row.original_price).toFixed(1));
