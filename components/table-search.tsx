@@ -24,7 +24,7 @@ export default async function GamesTable({query, price, shop, page, platform}: {
                         <Link key={game.id+'_'+index} href={{pathname: `/${game.platform}/infogame`, query: { id: game.id }}} className="flex items-center space-x-1 h-[100%]">
                         <div key={game.id+'_'+index} >
                             <Card className="bg-squirtle-gray pos-sticky product-box-search text-secondary-foreground">
-                                <CardHeader className="min-h-[84px]">
+                                <CardHeader className="card-header-search">
                                     <CardTitle className="high-font">{game.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="medium-bold medium-font ">

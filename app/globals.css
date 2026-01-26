@@ -140,6 +140,9 @@ body {
 .pagi-width{
   width: 420px;
 }
+.card-header-search{
+  min-height: 84px;
+}
 
 
 
@@ -231,6 +234,9 @@ body {
   }
   .pagi-width{
     width: 380px;
+  }
+  .card-header-search{
+    min-height: 72px;
   }
 }
 
