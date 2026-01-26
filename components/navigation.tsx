@@ -114,6 +114,11 @@ export default function Navigation() {
                   <Button className="medium-font w-[100%] bg-accent">Comparar Videojuegos</Button>
                 </Link> 
             </div>*/}
+            {/*<div className="hidden lg:block">   
+                <Link href="/planes" className="flex items-center space-x-2 w-[100%]">
+                  <Button className="medium-font w-[100%] bg-accent">Planes</Button>
+                </Link> 
+            </div>*/}
             <div className="hidden lg:block">            
                 <Link href="/search" className="flex items-center space-x-2 w-[100%]">
                   <Button className="medium-font w-[100%] bg-accent">Buscar Videojuegos</Button>

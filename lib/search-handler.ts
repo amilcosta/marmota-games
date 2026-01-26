@@ -66,7 +66,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
   //const values = [`%${juegoName}%`];
   let values = [];
   let query: string = '';
-  let offset: number = (page-1)*10
+  let offset: number = (page-1)*12
   values.push(`%${juegoName}%`);
   if(prices.length>0){
     values.push(parseInt(prices[0]));
@@ -75,7 +75,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       values.push(tienda);  
       if(platform>0){
         values.push(platform)
-        values.push(10);
+        values.push(12);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -84,7 +84,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and t."idTienda"=$4 and c."idConsola"=$5 '+
         'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $6 OFFSET $7';
       }else{
-        values.push(10);
+        values.push(12);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -94,7 +94,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       }
     }else if(platform>0){
         values.push(platform)
-        values.push(10);
+        values.push(12);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -103,7 +103,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt.precio>=$2 and pt.precio<=$3 and c."idConsola"=$4 '+
       'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $5 OFFSET $6';
     }else{
-      values.push(10);
+      values.push(12);
       values.push(offset);
       query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -116,7 +116,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       values.push(tienda);
       if(platform>0){
         values.push(platform)
-        values.push(10);
+        values.push(12);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -125,7 +125,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
         'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and t."idTienda"=$2 and c."idConsola"=$3 '+
         'and pt."fkConsola"=c."idConsola" and pt.activo=1 order by pt.precio asc limit $4 OFFSET $5';
       }else{
-        values.push(10);
+        values.push(12);
         values.push(offset);
         query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
         'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -135,7 +135,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       }
     }else if(platform>0){
       values.push(platform)
-      values.push(10);
+      values.push(12);
       values.push(offset);
       query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -143,7 +143,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
       'where UPPER(j."nombre") like UPPER($1) and  dj."fkJuegoDetalle"=j."idJuego" and dj."fkConsolaDetalle"=c."idConsola" and c."idConsola"=$2 '+
       'and pt."fkJuego"=j."idJuego" and pt."fkTienda"=t."idTienda" and pt."fkConsola"=c."idConsola" and pt.activo=1 limit $3 OFFSET $4';
     }else{
-      values.push(10);
+      values.push(12);
       values.push(offset);
       query =  'select j.*, dj."fkConsolaDetalle" as idconsola ,dj."edicion",dj."fechaLanzamiento" as release_date, c."nombre" as platform,c."logoConsola", '+
       'pt.precio as sale_price, pt."precioViejo" as original_price, t."nombreTienda" as store_name, t."idTienda" as store_id, t."logoTienda" as logo_store '+
@@ -225,7 +225,7 @@ export async function getTiendas(){
 export async function getTotalFiltro(juegoName: string, prices: string[], tienda: number, page: number, platform:number) {
   let values = [];
   let query: string = '';
-  let offset: number = (page-1)*10
+  let offset: number = (page-1)*12
   values.push(`%${juegoName}%`);
   if(prices.length>0){
     values.push(parseInt(prices[0]));

@@ -90,7 +90,7 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .width-icon-search{
-    width: 4%;
+    width: 8%;
 }
 .width-foot{
   width: 50%;
@@ -150,6 +150,9 @@ body {
   }
   .medium-font, .text-green-600, .text-black-600  {
     font-size: 12px;
+  }
+  .high-font{
+    font-size: 13px;
   }
   .full-width-header{
     colspan: 1;
