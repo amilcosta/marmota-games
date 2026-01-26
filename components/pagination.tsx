@@ -66,8 +66,8 @@ const PaginationComponent = ({ itemCount, pageSize, currentPage }: Props) => {
     router.push("?" + params.toString());
   };
   return (
-    <Pagination>
-      <PaginationContent className=" *:cursor-pointer">
+    <Pagination className="">
+      <PaginationContent className=" *:cursor-pointer pagi-width">
         <Button
           variant="ghost"
           disabled={currentPage <= 1}

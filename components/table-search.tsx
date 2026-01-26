@@ -19,11 +19,11 @@ export default async function GamesTable({query, price, shop, page, platform}: {
     return (
         <div>{games.length != 0 ? (
             <div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-search gap-4">
                     {games?.map((game, index) => ( 
                         <Link key={game.id+'_'+index} href={{pathname: `/${game.platform}/infogame`, query: { id: game.id }}} className="flex items-center space-x-1 h-[100%]">
                         <div key={game.id+'_'+index} >
-                            <Card className="bg-squirtle-gray pos-sticky min-h-[310px] min-w-[240px] text-secondary-foreground">
+                            <Card className="bg-squirtle-gray pos-sticky product-box-search text-secondary-foreground">
                                 <CardHeader className="min-h-[84px]">
                                     <CardTitle className="high-font">{game.title}</CardTitle>
                                 </CardHeader>
@@ -96,7 +96,7 @@ export default async function GamesTable({query, price, shop, page, platform}: {
             }
             
             <div className="mt-2">
-                <PaginationComponent
+                <PaginationComponent 
                         pageSize={pageSize}
                         currentPage={page}
                         itemCount={totalRows}
