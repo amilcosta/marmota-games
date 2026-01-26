@@ -31,20 +31,7 @@ export default async function GamesTable({query, price, shop, page, platform}: {
                                     <div className="flex min-h-[182px]">
                                         <img width="100%" src={game.imageUrl} className="" title={game.title}/>
                                     </div>
-                                    <div className="flex flex-wrap pt-[0.5em]">
-                                        Genero: 
-                                        {game.genre.map((gen, index) => (
-                                            <span key={index} className="text-gray-500 small-font pt-[1px]">
-                                            {index >=1 ? (
-                                                ', '+gen 
-                                            ):(gen )}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <div className="flex "> 
-                                        Fecha lanzamiento: <span className="text-gray-500">{game.releaseDate}</span>
-                                    </div>
-                                    <div className="flex "> 
+                                    <div className="flex pt-[8px]"> 
                                         <svg className="size-8 svg-icon svg-platform-nintendo-switch-1 width-icon-search pt-[2px]" >
                                             {game.platformid ==1 ? (
                                             <g fill="red">
@@ -61,22 +48,27 @@ export default async function GamesTable({query, price, shop, page, platform}: {
                                             ): ''} 
                                         </svg>
                                         {game.platformid ==1 ? (
-                                        <span className="small-font text-red-600">Nintendo Switch 1</span>
+                                        <span className="medium-font text-red-600">Nintendo Switch 1</span>
                                         ):  game.platformid == 2 ?( 
-                                            <span className="small-font ">Nintendo Switch 2</span>
+                                            <span className="medium-font ">Nintendo Switch 2</span>
                                         ) : game.platformid == 4 ? ( 
-                                            <span className="small-font text-blue-600">Play Station 4</span>
+                                            <span className="medium-font text-blue-600">Play Station 4</span>
                                         ): ''}
                                     </div>
-                                    <div className="flex min-h-[52px]">
+                                    <div className="flex ">
+                                        Precio: 
                                         {game.deals.map((deal, index) => (
-                                            <span key={index} className="w-[52%] flex float-right text-green-600">$ {deal.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+                                            <span key={index} className="w-[32%] flex float-right text-green-600">$ {deal.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
                                         ))}
                                         {game.deals.map((deal,index) => (
                                             deal.discountPercentage>0 ?
                                         <span key={index} className="w-[22%] flex float-right text-primary-foreground bg-secondary round-price mt-1 h-[25px]">-{deal.discountPercentage.toFixed(1)} %</span>
                                             : <span key={index} className="w-[25%] h-[20px] flex float-right text-primary-foreground  mt-1"></span>
                                         ))} 
+                                        
+                                    </div>
+                                    <div className="flex min-h-[52px]">
+                                        <span className="flex items-center">Tienda: </span>
                                         {game.deals.map((deal,index) => (
                                             <span key={index} className="w-[39%] flex float-right mt-3 mr-2"><img key={deal.id} width="40px" src={game.logoStore} className="ml-2" title={deal.storeName}/></span>
                                         ))}
