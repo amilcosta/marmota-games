@@ -77,8 +77,10 @@ export default function GameDealCard({ game, showFavoriteButton = true }: GameDe
         </Link>
         <CardDescription className="line-clamp-2">{game.description}</CardDescription>
         <div className="flex gap-2">
-          <Badge variant="secondary">{game.genre}</Badge>
-          <Badge variant="outline">{game.platform}</Badge>
+          <img src={game.logoConsole} width="10%"/>
+          <Badge variant="outline">
+            {game.platformName}
+          </Badge>
         </div>
       </CardHeader>
 

@@ -1,5 +1,5 @@
 import "server-only"
-import { getCurrentUser } from "./auth"
+//import { getCurrentUser } from "./auth"
 import { Pool } from 'pg';
 
 const pool = new Pool({
@@ -13,6 +13,7 @@ export interface GameDealDTO {
   description: string
   genre: string
   platform: string
+  platformName: string
   imageUrl: string
   logoConsole: string
   logoStore: string
@@ -77,13 +78,16 @@ export async function getSwitchTwoDTO(): Promise<GameDealDTO[]> {
 
     const client = await pool.connect();
     const {rows}  = await client.query('SELECT j."idJuego" as game_id,j.nombre as title, c.nombre as platform, j."idJuego" as deal_id, '+
-        'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url '+
+        'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url,c."logoConsola" as logo_console '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
         'and c."idConsola"=2 and pt.activo=1 limit 5');
     const gamesMap = new Map<number, GameDealDTO>();
 
     for (const row of rows) {
+        let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+            row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
+
         if (!gamesMap.has(row.game_id)) {
             gamesMap.set(row.game_id, {
                 id: row.game_id,
@@ -91,6 +95,7 @@ export async function getSwitchTwoDTO(): Promise<GameDealDTO[]> {
                 description: row.description,
                 genre: row.genre,
                 platform: row.platform,
+                platformName: platform_name,
                 imageUrl: row.image_url,
                 deals: [],
                 logoConsole: row.logo_console,
@@ -126,13 +131,16 @@ export async function getNewSwitchTwoDTO(): Promise<GameDealDTO[]> {
         'order by pt.fecha desc, precio asc limit 10');
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {
-        
+        let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+            row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
+
         gamesMap.set(row.game_id+'_'+row.store_id, {
             id: row.game_id,
             title: row.title,
             description: row.description,
             genre: row.genre,
             platform: row.platform,
+            platformName: platform_name,
             imageUrl: row.image_url,
             deals: [{
                 id: row.deal_id,
@@ -163,13 +171,16 @@ export async function getBestSwitchTwoDTO(): Promise<GameDealDTO[]> {
         'order by sale_price asc limit 10');
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {
-        
+        let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+            row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
+
             gamesMap.set(row.game_id+'_'+row.store_id, {
                 id: row.game_id,
                 title: row.title,
                 description: row.description,
                 genre: row.genre,
                 platform: row.platform,
+                platformName: platform_name,
                 imageUrl: row.image_url,
                 deals: [{
                     id: row.deal_id,
