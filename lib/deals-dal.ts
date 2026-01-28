@@ -14,6 +14,7 @@ export interface GameDealDTO {
   description: string
   genre: string
   platform: string
+  platformName: string
   imageUrl: string
   logoConsole: string
   logoStore: string
@@ -65,7 +66,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
   const client = await pool.connect();
   const { rows } = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, j.nombre, '+
     'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, '+
-    'pt."enlaceTienda" as deal_url '+
+    'pt."enlaceTienda" as deal_url, c."logoConsola" as logo_console '+
     'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
     'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
     'and pt.activo=1 and pt."fkConsola"=c."idConsola" limit 5'
@@ -84,12 +85,16 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
           discount = 0;
       }
 
+      let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+      row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
+
       gamesMap.set(row.game_id, {
         id: row.game_id,
         title: row.title ? row.title : row.nombre,
         description: row.description,
         genre: row.genre,
         platform: row.platform,
+        platformName: platform_name,
         imageUrl: row.image_url,
         deals: [],
         isFavorite: currentUser ? row.is_favorite : undefined,
@@ -217,6 +222,8 @@ export async function getNewDealsDTO(): Promise<GameDealDTO[]> {
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {
       let discount = parseFloat((100-(row.sale_price*100)/row.original_price).toFixed(1));
+      let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+        row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
       if(discount<0){
             discount = 0;
         }
@@ -227,6 +234,7 @@ export async function getNewDealsDTO(): Promise<GameDealDTO[]> {
             description: row.description,
             genre: row.genre,
             platform: row.platform,
+            platformName: platform_name,
             imageUrl: row.image_url,
             deals: [
               {
@@ -264,6 +272,8 @@ export async function getBestDealsDTO(): Promise<GameDealDTO[]> {
       if(discount<0){
             discount = 0;
         }
+      let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+        row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
         //if (!gamesMap.has(row.game_id)) {
             gamesMap.set(row.game_id+'_'+row.store_id+"_"+row.id_consola, {
                 id: row.game_id,
@@ -271,6 +281,7 @@ export async function getBestDealsDTO(): Promise<GameDealDTO[]> {
                 description: row.description,
                 genre: row.genre,
                 platform: row.platform,
+                platformName: platform_name,
                 imageUrl: row.image_url,
                 deals: [{
                   id: row.deal_id,
