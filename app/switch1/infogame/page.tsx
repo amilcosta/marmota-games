@@ -132,6 +132,11 @@ export default async function InfoGamePage({
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <TopMenuGames allSelected='' switchSelected='bg-primary' switchTwoSelected='' ps4Selected=''/>
+                {infoGame.length === 0 ? (
+                <div className="text-center py-12">
+                    <p className="text-gray-500 text-lg">Juego no encontrado</p>
+                </div>
+                ) : (
                 <div className="mb-8">
                     <div className="grid grid-info gap-info">
                         <div className="w-[100%] mt-12 text-secondary-foreground full-width-header">
@@ -250,8 +255,7 @@ export default async function InfoGamePage({
                                             <div key={game.id} className="m-auto mt-3 width-info-bottom  flex float-right">
                                                 
                                                 <Button  className="cursor-pointer w-[90%] ml-2 small-font bg-accent">
-                                                    <a href={game.dealUrl} target="_blank" rel="noopener noreferrer">
-                                                    
+                                                    <a href={game.dealUrl} target="_blank" rel="noopener noreferrer">                                                 
                                                     Comprar ahora
                                                     </a>
                                                 </Button>   
@@ -295,21 +299,22 @@ export default async function InfoGamePage({
                             </Card>
                         </div>
                     </div>
-                </div>
-                <div className="mb-8 text-secondary-foreground">
-                    {infoGame.map((infogame, index) => (
-                    <h1 key={index} className="text-3xl font-bold mb-2">Historial del precio de {infogame.title}</h1>
-                    ))}
-                    <Card className="bg-squirtle-gray">
-                        <CardHeader>
-                            <CardTitle>Precio por tienda</CardTitle>
-                            <CardDescription></CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ChartComponent data={linedata} />
-                        </CardContent>
-                    </Card>
-                </div>
+                    <div className="mb-8 text-secondary-foreground">
+                        {infoGame.map((infogame, index) => (
+                        <h1 key={index} className="text-3xl font-bold mb-2">Historial del precio de {infogame.title}</h1>
+                        ))}
+                        <Card className="bg-squirtle-gray">
+                            <CardHeader>
+                                <CardTitle>Precio por tienda</CardTitle>
+                                <CardDescription></CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ChartComponent data={linedata} />
+                            </CardContent>
+                        </Card>
+                    </div>   
+                </div>        
+                )}
             </main>
             <Footer />
         </div>

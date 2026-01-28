@@ -282,8 +282,8 @@ export async function getInfoGameStoreDTO(juegoId: Number): Promise<HistoryStore
 
     const query1 = 'SELECT j."pkJuegoMatch" as match FROM "JUEGO" j WHERE j."idJuego"=$1 ';
     const getmatch = await client.query(query1, values);
-    
-    if(getmatch.rows[0].match!=null){
+    //console.log(getmatch.rows[0].length);
+    if(getmatch.rows.length>0){
         for(const row of getmatch.rows){
             const values2 = [row.match];
             const queryids = 'SELECT j."idJuego" as id from "JUEGO" j, "PRECIOTIENDA" p where j."pkJuegoMatch"=$1 '+
@@ -406,7 +406,7 @@ export async function getBestOffertsDTO(juegoId: Number): Promise<StoreDTO[]> {
     const query1 = 'SELECT j."pkJuegoMatch" as match FROM "JUEGO" j WHERE j."idJuego"=$1 ';
     const getmatch = await client.query(query1, values);
 
-    if(getmatch.rows[0].match!=null){
+    if(getmatch.rows.length>0){
         for(const row of getmatch.rows){
             const values2 = [row.match];
             const query = 'SELECT t."idTienda" as store_id, t."logoTienda" as logo_store,j.nombre as title, t."nombreTienda" as store_name, '+
