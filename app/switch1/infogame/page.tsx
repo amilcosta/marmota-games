@@ -131,7 +131,7 @@ export default async function InfoGamePage({
         <div className="min-h-screen bg-gray-50">
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <TopMenuGames allSelected='' switchSelected='bg-primary' switchTwoSelected='' ps4Selected=''/>
+                <TopMenuGames allSelected='' switchSelected='bg-primary' switchTwoSelected='' ps4Selected='' ps5Selected=''/>
                 {infoGame.length === 0 ? (
                 <div className="text-center py-12">
                     <p className="text-gray-500 text-lg">Juego no encontrado</p>

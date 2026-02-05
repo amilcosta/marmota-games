@@ -17,7 +17,7 @@ export default async function Switch2Page() {
         <div className="min-h-screen bg-gray-50">
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <TopMenuGames allSelected='' switchSelected='' switchTwoSelected='bg-primary' ps4Selected=''/>
+            <TopMenuGames allSelected='' switchSelected='' switchTwoSelected='bg-primary' ps4Selected='' ps5Selected=''/>
 
             {switchDeals.length === 0 ? (
             <div className="text-center py-12">

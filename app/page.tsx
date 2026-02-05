@@ -15,13 +15,14 @@ export default async function HomePage() {
   const newDeals = await getNewDealsDTO();
   const bestDeals = await getBestDealsDTO();
 
+  let visibleSpin: boolean = false;
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <TopMenuGames allSelected='bg-primary' switchSelected='' switchTwoSelected='' ps4Selected=''/>
+        <TopMenuGames allSelected='bg-primary' switchSelected='' switchTwoSelected='' ps4Selected='' ps5Selected=''/>
 
         {gameDeals.length === 0 ? (
           <div className="text-center py-12">
@@ -54,7 +55,7 @@ export default async function HomePage() {
               {newDeals.map((newsdeals, index) => (              
                 <AccordionItem key={newsdeals.id+'_'+index} value={index + '_'} className={(index=== newDeals.length-1)?"hover:bg-primary/30 height-row text-secondary-foreground medium-bold":
                 "hover:bg-primary/30 height-row text-secondary-foreground medium-bold separator-bottom"}>
-                  <Link href={{pathname: `/${newsdeals.platform}/infogame`, query: { id: newsdeals.id }}} className="flex items-center space-x-1 h-[100%]">
+                  <Link href={{pathname: `/${newsdeals.platform}/infogame`, query: { id: newsdeals.id }}} className="flex items-center space-x-1 h-[100%] ">
                     <AccordionTrigger className="w-[17%] h-[100%] float-left " > 
                       <span className="w-[100%] h-[100%]"><img className="w-[100%] h-[100%]" src={newsdeals.imageUrl} /></span>
                     </AccordionTrigger>
@@ -63,8 +64,11 @@ export default async function HomePage() {
                       <span className="w-[100%] flex"><img width="20px" src={newsdeals.logoConsole} className="mr-2"/>  - 
                       {newsdeals.deals.map((deal) => (
                         <img key={deal.id} width="20px" src={newsdeals.logoStore} className="ml-2" title={deal.storeName}/>
+                        
                       ))}
+                      <span className={visibleSpin ? "loader-spin ml-[1em]" : "loader-spin ml-[1em] invisible"}></span>
                       </span>
+                      
                     </AccordionTrigger>
                     <AccordionTrigger className="with-row-price h-[100%] float-left">
                       {newsdeals.deals.map((deal) => (

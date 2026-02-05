@@ -131,7 +131,7 @@ export default async function InfoGamePage({
         <div className="min-h-screen bg-gray-50">
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <TopMenuGames allSelected='' switchSelected='' switchTwoSelected='' ps4Selected='bg-primary'/>
+                <TopMenuGames allSelected='' switchSelected='' switchTwoSelected='' ps4Selected='bg-primary' ps5Selected=''/>
                 <div className="mb-8">
                     <div className="grid grid-info gap-info">
                         <div className="w-[100%] mt-12 text-secondary-foreground full-width-header">
