@@ -8,6 +8,8 @@ import Link from "next/link";
 import TopMenuGames from "@/components/top-menu-games";
 import Footer from "@/components/footer";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Switch1Page() {
 
   const switchDeals = await getSwitchOneDTO();
