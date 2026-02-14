@@ -48,6 +48,11 @@ export default async function HomePage() {
             </Carousel>
           </div>
         )}
+          <div className="mb-8">
+            <Link href={{pathname: `/gameawards`}}>
+            <img src="https://nbg1.your-objectstorage.com/marmota/title_images/GameAwards2025Banner2.jpg" />
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             <div>
               <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Nuevos Descuentos</h1>

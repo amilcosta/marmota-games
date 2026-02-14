@@ -296,20 +296,23 @@ export async function getInfoGameStoreDTO(juegoId: Number): Promise<HistoryStore
     if(getmatch.rows.length>0){
         for(const row of getmatch.rows){
             const values2 = [row.match];
-            const queryids = 'SELECT j."idJuego" as id from "JUEGO" j, "PRECIOTIENDA" p where j."pkJuegoMatch"=$1 '+
+            const queryids = 'SELECT j."idJuego" as id, p."fkTienda" as storeid from "JUEGO" j, "PRECIOTIENDA" p where j."pkJuegoMatch"=$1 '+
             'and j."idJuego"=p."fkJuego" and p.activo=1 and p."fkConsola"=1 ';
             const idsjuegos = await client.query(queryids,values2);
 
             let idsadd: number[]=[];
+            let idstore: number[]=[];
             const lastElement = idsjuegos.rows[idsjuegos.rows.length - 1]; 
             for(const row of idsjuegos.rows){
                 idsadd.push(parseInt(row.id));
+                idstore.push(parseInt(row.storeid));
             }
             
-            const valueId = [idsadd];
+            const valueId = [idsadd,idstore];
             const query = 'SELECT ht.precio,ht.fecha,t."nombreTienda" as store_name, t."idTienda" as store_id '+
             'FROM "HISTORICOTIENDA" ht, "TIENDA" t '+
-            'WHERE ht."fkJuegoHistorial" = ANY($1) and t."idTienda"=ht."fkTiendaHistorial" and ht."fkConsola"=1 '+
+            'WHERE ht."fkJuegoHistorial" = ANY($1) and t."idTienda"=ht."fkTiendaHistorial" and ht."fkTiendaHistorial" = ANY($2) '+ 
+            'and ht."fkConsola"=1 '+
             'order by fecha asc, store_name ';
 
         

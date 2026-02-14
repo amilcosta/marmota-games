@@ -296,7 +296,7 @@ export default async function InfoGamePage({
                         </div>
                     </div>
                 </div>
-                <div className="mb-8 text-secondary-foreground">
+                <div className="mb-8 text-secondary-foreground mt-[2em]">
                     {infoGame.map((infogame, index) => (
                     <h1 key={index} className="text-3xl font-bold mb-2">Historial del precio de {infogame.title}</h1>
                     ))}
