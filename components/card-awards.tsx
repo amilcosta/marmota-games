@@ -8,7 +8,7 @@ const CardAwardsComponent = ({ game, award}: any) => {
         <Link key={game.id} href={{pathname: '/gameawards/infogame', query: { id: game.id,aw: award }}} className="">
             <Card className="bg-squirtle-gray pos-sticky product-box-search text-secondary-foreground">
                 <CardHeader className="card-header-search">
-                    <CardTitle className="high-font">{game.title}</CardTitle>
+                    <CardTitle className="high-font-award">{game.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="medium-bold">
                     <img width="100%" src={game.imageUrl} className="" title={game.title}/>

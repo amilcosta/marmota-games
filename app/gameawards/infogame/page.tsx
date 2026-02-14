@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu";
+import Footer from "@/components/footer";
 
 export default async function InfoGameAwardsPage({
     params, 
@@ -53,7 +54,7 @@ export default async function InfoGameAwardsPage({
                         </NavigationMenuList>
                     </NavigationMenu>        
                     <div className="grid grid-info gap-info border rounded-lg shadow-sm bg-squirtle-gray mt-[2em]">
-                        <div className="text-secondary-foreground m-8">
+                        <div className="text-secondary-foreground colspan-award">
                             
                             {juegoMatch.map((matchgame, index) => (
                                 <img key={index} width="100%" src={matchgame.imageUrl} className="" title={matchgame.title}/>
@@ -133,6 +134,7 @@ export default async function InfoGameAwardsPage({
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     )
 }
