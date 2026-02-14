@@ -16,7 +16,7 @@ const CardAwardsComponent = ({ game, award}: any) => {
                 <CardFooter>
                     {game.winner==1 ? 
                     <div className="w-[150px] trophy">
-                        <img src="https://i.ibb.co/kVZ3CN6/trophy.png" width="18%" alt="trophy" className="float-left " />
+                        <img src="https://nbg1.your-objectstorage.com/marmota/tienda_logo/trophy.png" width="18%" alt="trophy" className="float-left " />
                         <span className="ml-[1em]">Ganador</span>
                     </div>
                         : "" }
