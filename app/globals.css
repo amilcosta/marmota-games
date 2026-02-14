@@ -133,7 +133,7 @@ body {
   position: relative;
   right: 16px;
 }
-.product-box-search{
+.product-box-search, .product-box-awards{
   min-height: 310px;
   min-width: 240px;
 }
@@ -176,7 +176,7 @@ body {
     font-size: 12px;
   }
   .high-font{
-    font-size: 13px;
+    font-size: 14px;
   }
   .full-width-header{
     colspan: 1;
@@ -261,7 +261,10 @@ body {
   .high-font-award{
     font-size: 15px;
   }
-  
+  .product-box-awards{
+    min-height: 240px;
+    min-width: 160px;
+  }
   
 }
 
