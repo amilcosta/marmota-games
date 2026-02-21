@@ -31,18 +31,16 @@ export default async function Footer() {
                         <div className="w-[100%] h-7">
                             <Link href={{pathname: `/nosotros`}} ><span className="font-bold text-gray-600 hover:text-accent">Nosotros</span></Link>
                         </div>
-                        <div className="w-[100%] h-7"><span className="font-bold text-gray-600">Contactanos</span></div>
-                        
+                        <div className="w-[100%] h-7">
+                            <span className="font-bold text-gray-600">Contactanos</span>
+                        </div>
+                        <div className="w-[100%] h-7">
+                            <Link href={{pathname: `/terminos`}} ><span className="font-bold text-gray-600 hover:text-accent">Terminos y Condiciones</span></Link>
+                        </div>
+                        <div className="w-[100%] h-7">
+                            <Link href={{pathname: `/preguntas`}} ><span className="font-bold text-gray-600 hover:text-accent">Preguntas Frecuentes</span></Link>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="w-[100%]"><span className="font-bold text-gray-600"></span></div>
-                        <div className="w-[100%]"><span className="font-bold text-gray-600"></span></div>
-                    </div>
-                </div>
-                <div className="flex justify-between h-12 mt-2">
                     <div className="flex flex-col">
                         <div>
                             <Link href={""}>
@@ -80,6 +78,15 @@ export default async function Footer() {
                             </button>
                             </Link>
                         </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <div className="w-[100%]"><span className="font-bold text-gray-600"></span></div>
+                        <div className="w-[100%]"><span className="font-bold text-gray-600"></span></div>
+                    </div>
+                </div>
+                <div className="flex justify-between h-12 mt-2">
+                    <div className="flex flex-col">
+                        
                     </div>
                 </div>
             </div>
