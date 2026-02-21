@@ -10,14 +10,14 @@ export default async function PreguntasFrecuentes() {
         <div className="min-h-screen bg-gray-50">
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="mb-8">
-                    <div className="grid grid-cols-1 bg-squirtle-gray rounded-md">
+                <div className="mb-8 bg-squirtle-gray rounded-md pt-[2em] pb-[2em]">
+                    <div className="grid grid-cols-1  w-[90%] m-auto">
                     <div className="justify-center text-center">
                         <h1 className="text-secondary-foreground w-[100%] text-3xl pb-3">Preguntas Frecuentes</h1>
                     </div>
                     
                     <Accordion type="single" defaultValue="nace" collapsible >
-                        <AccordionItem value="nace" >
+                        <AccordionItem value="nace" className="hover:bg-primary/30">
                             <AccordionTrigger className="text-secondary-foreground text-2xl">¿Cómo nació MarmotaPay?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 Nació de una simple necesidad: Comprar el videojuego que queremos al mejor precio posible.<br></br>
@@ -27,14 +27,14 @@ export default async function PreguntasFrecuentes() {
                             </AccordionContent> 
                         </AccordionItem>
 
-                        <AccordionItem value="busqueda">
+                        <AccordionItem value="busqueda" className="hover:bg-primary/30">
                             <AccordionTrigger className="text-secondary-foreground text-2xl">¿Qué buscamos?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 Esta página nos ahorrará mucho tiempo a nosotros, y nuestro único deseo es ofrecerla a la comunidad para que tanto 
                                 vendedores como compradores se beneficien.
                             </AccordionContent>
                         </AccordionItem>
-                        <AccordionItem value="servicios">
+                        <AccordionItem value="servicios" className="hover:bg-primary/30">
                             <AccordionTrigger className="text-secondary-foreground text-2xl">¿Cuáles servicios ofrecemos?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 Mientras creábamos esta página pensamos en varios proyectos que nos parecieron interesantes, por ejemplo, la sección 
@@ -42,14 +42,14 @@ export default async function PreguntasFrecuentes() {
                                 Si te interesa escuchar más sobre lo que podemos ofrecer, visita la sección “El Cofre de la Marmota” para usuarios premium.
                             </AccordionContent>
                         </AccordionItem>
-                        <AccordionItem value="almacena">
+                        <AccordionItem value="almacena" className="hover:bg-primary/30">
                             <AccordionTrigger className="text-secondary-foreground text-2xl">¿Cómo almacenan mis datos?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 Los únicos datos que almacenamos son los datos de los videojuegos, los cuales son públicos y de libre acceso para 
                                 cualquier persona de internet. No almacenamos datos (cookies) de las personas que nos visitan.
                             </AccordionContent>
                         </AccordionItem>
-                        <AccordionItem value="alianza">
+                        <AccordionItem value="alianza" className="hover:bg-primary/30">
                             <AccordionTrigger className="text-secondary-foreground text-2xl">¿Tienen alguna alianza?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 No, ninguna. No tenemos alianzas con tiendas, sitios webs, empresas u otros.
