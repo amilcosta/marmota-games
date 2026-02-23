@@ -8,6 +8,8 @@ import Link from "next/link";
 import TopMenuGames from "@/components/top-menu-games";
 import Footer from "@/components/footer";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Switch2Page() {
     const switchDeals = await getSwitchTwoDTO();
     const newSwitchDeals = await getNewSwitchTwoDTO();
@@ -109,6 +111,7 @@ export default async function Switch2Page() {
             </div>
             ) : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"></div>}
         </main>
+        <Footer/>
         </div>
     )
 }
