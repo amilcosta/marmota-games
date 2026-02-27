@@ -24,7 +24,7 @@ export default async function Switch1Page() {
 
         {switchDeals.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No deals available at the moment.</p>
+            <p className="text-gray-500 text-lg">No hay ofertas para Nintendo Switch por el momento</p>
           </div>
         ) : (
           <div className="mb-8">

@@ -2,17 +2,13 @@ import { cache } from "react"
 import { cookies } from "next/headers"
 import { neon } from "@neondatabase/serverless"
 import bcrypt from "bcryptjs"
-//import jwt from "jsonwebtoken"
-//import postgres from 'postgres';
-
 import { Pool } from 'pg';
+import axios from 'axios';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: false,
 });
-
-//const sql = postgres(process.env.DATABASE_URL, { ssl: 'require' });//neon(process.env.DATABASE_URL!)
 
 export interface User {
   id: number
@@ -66,7 +62,7 @@ export async function signIn(email: string, password: string) {
   return { id: user.id, email: user.email, role: user.role }
 }
 */
-export async function signUp(email: string ) {//password: string
+export async function signUp(email: string, cel: string) {//password: string
   //const hashedPassword = await bcrypt.hash(password, 12);
 
   const client = await pool.connect();
@@ -80,16 +76,46 @@ export async function signUp(email: string ) {//password: string
     //throw new Error("Usuario ya existe registrado")
     return  { message: "El correo ya se encuentra registrado", code: 400 };
   }
-  console.log("No exist user: ", result.rows)
-  const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion") values ($1, CURRENT_DATE) RETURNING "idUsuario"';
-  const valuesuser = [email];
+  
+  const toknumber= process.env.TOKEN_NUMBER;
+  const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion", numero) values ($1, CURRENT_DATE, pgp_sym_encrypt($2, $3)) RETURNING "idUsuario"';
+  const valuesuser = [email,cel,toknumber];
 
   const result1 = await client.query(nuevouser, valuesuser);
 
-  console.log("usuario reg: ", result1.rows)
   //return await signIn(email, password)
   client.release();
-  return { message: "Se ha registrado el correo exitosamente", code: 200 };
+
+  /*const resend = new Resend(process.env.RESEND_API_KEY);
+  const { data, error } = await resend.emails.send({
+    from: 'test.email@gm.com',
+    to: 'dk.yoshi.gamer@gmail.com',
+    subject: 'Hello World',
+    html: '<strong>it works!</strong>'
+  });
+
+  if (error) {
+    return console.log(error);
+  }*/
+
+  const BOT_TOKEN = process.env.TELEGRAM_TOKEN;
+  const CHAT_ID = process.env.TELEGRAM_PRIVATE_GROUP_ID;
+  const message = "El usuario "+email+" ha pedido solicitud de ser premium";
+  const url = `https://api.telegram.org${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=markdown`;
+
+  try {
+      const response = await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        chat_id: CHAT_ID,
+        text: message,
+      });
+      if(response.data.ok){
+        return { message: "Se ha registrado el correo exitosamente", code: 200 };
+      }
+  }catch (error) {
+    return { message: "Error Envio mensaje", code: 400 };
+  }
+
+  //return { message: "Se ha registrado el correo exitosamente", code: 200 };
 }
 
 export async function signOut() {

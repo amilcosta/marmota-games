@@ -5,11 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link";
-import { FormEvent } from 'react';
 import React, { useState, useActionState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription,DialogFooter, DialogClose } from '@/components/ui/dialog';
 import Image from "next/image";
 import marmota from "@/public/marmotapay.png";
+import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
+
 
 export default function SignUpPage() {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +32,8 @@ export default function SignUpPage() {
     }
   };*/
   
-  const [state, dispatch] = useActionState(signUpAction, { email: "" });
+  const [state, dispatch] = useActionState(signUpAction, { email: "", numero:"" });
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -51,13 +53,18 @@ export default function SignUpPage() {
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Registro</CardTitle>
-            <CardDescription>Crear una cuenta para avisarte tus ofertas de 3 juegos favoritos</CardDescription>
+            <CardDescription>Crear una cuenta para ponernos en contacto contigo y gestionar el pago para ser parte de cuenta premium y unirse al grupo privado de Telegram</CardDescription>
           </CardHeader>
           <CardContent>
             <form action={dispatch} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required placeholder="Enter your email" />
+                <Input id="email" name="email" type="email" required placeholder="Ingresar su email" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="numero" className="float-left w-[100%]">Numero Telefono Mobil</Label>
+                <Input id="cod" name="cod" type="text" value="+56" className="float-left w-[20%]" disabled/>
+                <Input id="numero" name="numero" type="number" required placeholder="Ingresar número" className="float-left w-[75%] ml-[1em]" />
               </div>
               
               <Button type="submit" className="w-full bg-accent" onClick={() => setIsDialogOpen(true)}>
@@ -65,37 +72,26 @@ export default function SignUpPage() {
               </Button>
             </form>
             <div className="mt-4 text-center">
-              <Link href="/auth/signin" className="text-sm text-blue-600 hover:underline">
+              {/*<Link href="/auth/signin" className="text-sm text-blue-600 hover:underline">
                 Ya tienes una cuenta registrada?
-              </Link>
+              </Link>*/}
             </div>
-            {state.code && ( 
-            <Dialog open={isDialogOpen} >
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogTitle>Edit profile</DialogTitle>
-                <DialogDescription >
-                  Make changes to your profile.
-                </DialogDescription>
-
-                <div className="grid gap-4 py-4">
-                  {/* Your form elements or content here */}
-                  <p>{state.message}</p>
-                </div>
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button onClick={() => setIsDialogOpen(false)} type="button" className="bg-accent">
-                      Close
-                    </Button>
-                  </DialogClose>
-                  
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-            )}
+            
             
           </CardContent>
         </Card>
       </div>
+      { state?.code == 200 ? 
+      <Dialog defaultOpen>
+        <DialogPortal>
+          <DialogOverlay></DialogOverlay>
+          <DialogContent>
+            <DialogTitle>Registro</DialogTitle>
+            <DialogDescription>Usuario se ha registrado exitosamente. En breve nos pondremos en cotacto contigo.</DialogDescription>
+          </DialogContent>
+        </DialogPortal>
+      </Dialog>
+        : "" }
     </div>
   )
 }

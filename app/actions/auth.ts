@@ -44,10 +44,11 @@ export async function signUpActionOld(formData):Promise<RespuestaDTO> {
 
 export async function signUpAction( prevState: { url: string },formData: FormData) {
  
-  const email = formData.get("email") as string
+  const email = formData.get("email") as string;
+  const numero = "56"+formData.get("numero") as string;
 
-  const resul = await signUp(email);
 
+  const resul = await signUp(email, numero);
   return resul;//{message: 'Invalid', code: 400};
 
 }

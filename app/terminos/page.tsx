@@ -17,12 +17,17 @@ export default async function Terminos() {
                                     <div className="grid grid-cols-1 justify-center pt-2 text-center">
                                         <h1 className="text-secondary-foreground w-[100%] text-3xl pb-3">Términos y Condiciones</h1>
                                         <div className="medium-font min-h-48 text-left">
-                                            El acceso y la utilización de este sitio web (en adelante, el Sitio), así como de sus servicios proporcionados a través de las redes sociales 
-                                            (Twitter, Instagram, Telegram y otras plataformas adicionales) o cualquier otra página o aplicación accesible desde el Sitio, están sujetos 
-                                            a la aceptación plena de los términos y condiciones que se detallan en este documento. <br></br>
-                                            Al acceder al Sitio, utilizarlo directa o indirectamente, leerlo o participar en él, el usuario acepta automáticamente estos Términos y Condiciones en su totalidad. 
-                                            Si no se aceptan dichas condiciones, se excluye la posibilidad de acceder o hacer uso de la información disponible en los diversos medios proporcionados por Marmota Pay. <br></br>
-                                                     
+                                            <ul className="list-disc w-[95%] m-auto">
+                                                <li>
+                                                    El acceso y la utilización de este sitio web (en adelante, el Sitio), así como de sus servicios proporcionados a través de las redes sociales 
+                                                (Twitter, Instagram, Telegram y otras plataformas adicionales) o cualquier otra página o aplicación accesible desde el Sitio, están sujetos 
+                                                 a la aceptación plena de los términos y condiciones que se detallan en este documento.
+                                                </li>
+                                                <li>
+                                                    Al acceder al Sitio, utilizarlo directa o indirectamente, leerlo o participar en él, el usuario acepta automáticamente estos Términos y Condiciones en su totalidad. 
+                                                    Si no se aceptan dichas condiciones, se excluye la posibilidad de acceder o hacer uso de la información disponible en los diversos medios proporcionados por Marmota Pay.
+                                                </li>
+                                            </ul>       
                                         </div>
                                         <h1 className="text-secondary-foreground w-[100%] text-3xl pb-3">Privacidad y Confidencialidad</h1>
                                         <div className="medium-font min-h-52 text-left">
@@ -34,11 +39,15 @@ export default async function Terminos() {
                                         </div>
                                         <h1 className="text-secondary-foreground w-[100%] text-3xl pb-3">Responsabilidad</h1>
                                         <div className="medium-font min-h-48 text-left">
-                                            Marmota Pay opera únicamente como una plataforma de divulgación de información en todos sus sitios web y redes sociales. En ningún caso asumimos responsabilidad por el uso que los usuarios finales hagan de dicha información, 
-                                            ni garantizamos la veracidad o cumplimiento de las ofertas proporcionadas por terceros, ya sean veraces o falsas.<br></br>
-                                            Los precios finales en las tiendas pueden ser diferentes a los mostrados. Siempre verifica el monto que vas a pagar. Considera y verifica los costos asociados a la compra, como el
-                                            valor de los envíos de paquetes u otros, antes de pagar.<br></br>
-                                            NUNCA entregues información confidencial, por ningún medio te la pediremos. NUNCA te pediremos información confidencial sobre tus compras.
+                                            <ul className="list-disc w-[95%] m-auto">
+                                                <li>Marmota Pay opera únicamente como una plataforma de divulgación de información en todos sus sitios web y redes sociales. En ningún caso asumimos responsabilidad por el uso que los usuarios finales hagan de dicha información, 
+                                                ni garantizamos la veracidad o cumplimiento de las ofertas proporcionadas por terceros, ya sean veraces o falsas.<br></br>
+                                                </li>
+                                                <li>Los precios finales en las tiendas pueden ser diferentes a los mostrados. Siempre verifica el monto que vas a pagar. Considera y verifica los costos asociados a la compra, como el
+                                                valor de los envíos de paquetes u otros, antes de pagar.
+                                                </li>
+                                                <li>NUNCA entregues información confidencial, por ningún medio te la pediremos. NUNCA te pediremos información confidencial sobre tus compras.</li>
+                                            </ul>  
                                         </div>
                                     </div>
                                 </CardContent>
