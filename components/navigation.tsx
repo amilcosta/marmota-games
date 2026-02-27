@@ -21,6 +21,7 @@ export default function Navigation() {
     { name: "Home", href: "/" },
     { name: "Buscar Videojuegos", href: "/search" },
     //{ name: "Comparar Videojuegos", href: "/compare" },
+    { name: "Cofre de la Marmota", href: "/planes"},
     { name: "Contactanos", href: "/contact" },
   ];
 
