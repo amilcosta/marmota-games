@@ -66,7 +66,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
   const client = await pool.connect();
   const { rows } = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, j.nombre, '+
     'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, '+
-    'pt."enlaceTienda" as deal_url, c."logoConsola" as logo_console, favorito '+
+    'pt."enlaceTienda" as deal_url, c."logoConsola" as logo_console '+
     'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
     'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
     'and pt.activo=1 and pt."fkConsola"=c."idConsola" limit 5'
@@ -97,7 +97,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
         platformName: platform_name,
         imageUrl: row.image_url,
         deals: [],
-        isFavorite: row.favorito,
+        isFavorite: false,//row.favorito,
         logoConsole: row.logo_console,
         logoStore: row.logo_store,
       })

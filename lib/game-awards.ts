@@ -497,8 +497,7 @@ export async function getGamesTienda(juegoId: Number): Promise<GameStores[]> {
                 }
                 let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
                 row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
-                let fontcolor= row.platform=="switch1" ? "red" : row.platform=="switch2" ? "red" : row.platform=="ps4" ? "green" : 
-                "gray";
+                let fontcolor= row.platform=="switch1" ? "red" : row.platform=="switch2" ? "red" : row.platform=="ps4" ? "green" : "gray";
 
                 gamesMap.set(countrows,{
                     title: row.nombre,
