@@ -16,7 +16,10 @@ interface GameDealCardProps {
 }
 
 export default function GameDealCard({ game, showFavoriteButton = true }: GameDealCardProps) {
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition();
+  if(game.isFavorite){
+    showFavoriteButton=false;
+  }
 
   const bestDeal = game.deals.reduce((best, current) =>
     current.discountPercentage > best.discountPercentage ? current : best,
@@ -24,8 +27,9 @@ export default function GameDealCard({ game, showFavoriteButton = true }: GameDe
 
   const handleToggleFavorite = () => {
     startTransition(() => {
-      toggleFavoriteAction(game.id)
+      toggleFavoriteAction(game.id, game.platform)
     })
+    
   }
 
   const formatTimeLeft = (expiresAt: string | null) => {
