@@ -57,8 +57,8 @@ export default async function PreguntasFrecuentes() {
                         </AccordionItem>
                     </Accordion>
                     <div className="mt-[2em]">
-                        <h1>*** IMPORTANTE ***</h1>
-                        <h2>Si tienes dudas contáctanos directamente por Telegram.</h2>
+                        <h1 className="text-secondary-foreground text-2xl">*** IMPORTANTE ***</h1>
+                        <h2 className="high-text">Si tienes dudas contáctanos directamente por Telegram.</h2>
                     </div>
                     </div>
                 </div>

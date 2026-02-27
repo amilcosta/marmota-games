@@ -25,7 +25,7 @@ export default async function Switch1Page() {
 
         {ps4Deals.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No deals available at the moment.</p>
+            <p className="text-gray-500 text-lg">No hay ofertas para Play Station 4 por el momento</p>
           </div>
         ) : (
           <div className="mb-8">

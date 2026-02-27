@@ -120,6 +120,11 @@ export default function Navigation() {
                 </Link> 
             </div>*/}
             <div className="hidden lg:block">            
+                <Link href="/planes" className="flex items-center space-x-2 w-[100%]">
+                  <Button className="medium-font w-[100%] bg-accent">Cofre de la Marmota</Button>
+                </Link>
+            </div>
+            <div className="hidden lg:block">            
                 <Link href="/search" className="flex items-center space-x-2 w-[100%]">
                   <Button className="medium-font w-[100%] bg-accent">Buscar Videojuegos</Button>
                 </Link>

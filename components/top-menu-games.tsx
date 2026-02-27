@@ -51,6 +51,12 @@ export default function TopMenuGames({allSelected,switchSelected,switchTwoSelect
                         <Link href="/ps5" className="flex items-center space-x-1 hover:text-gray-600">Play Station 5</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuLink className={`block select-none rounded px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none hover:bg-primary/30 focus:shadow-violet7`} 
+                    style={{cursor: 'pointer'}} asChild>
+                        <Link href="/gameawards" className="flex items-center space-x-1 hover:text-gray-600">Game Awards</Link>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
                 
             </NavigationMenuList>
         </NavigationMenu>

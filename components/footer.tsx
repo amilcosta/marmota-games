@@ -16,7 +16,7 @@ export default async function Footer() {
                         <span className="font-bold text-gray-600">
                             <Link href={{pathname: `/`}} ><Image src={marmota} width={80} height={80} alt="Marmota Pay" /></Link>
                         </span>
-                        <span className=" pl-2">Marmota Pay es una pagina que muestra las ofertas de videojuegos fisicos de las distintas tiendas a nivel nacional</span>
+                        <span className=" pl-2 text-secondary-foreground">Marmota Pay es una pagina que muestra las ofertas de videojuegos fisicos de las distintas tiendas a nivel nacional</span>
            
                     </div>
                     <div className="flex items-center ">
@@ -43,7 +43,7 @@ export default async function Footer() {
                     </div>
                     <div className="flex flex-col">
                         <div>
-                            <Link href={""}>
+                            <Link href={"https://www.instagram.com/marmotapay"} target="blank">
                             <button
                                 type="button"
                                 data-twe-ripple-init

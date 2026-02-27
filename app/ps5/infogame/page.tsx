@@ -131,6 +131,11 @@ export default async function InfoGamePage({
             <Navigation />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <TopMenuGames allSelected='' switchSelected='' switchTwoSelected='' ps4Selected='' ps5Selected='bg-primary'/>
+                {infoGame.length === 0 ? (
+                <div className="text-center py-12">
+                    <p className="text-gray-500 text-lg">El juego no existe para la consola</p>
+                </div>
+                ) : (
                 <div className="mb-8">
                     <div className="grid grid-info gap-info">
                         <div className="w-[100%] mt-12 text-secondary-foreground full-width-header">
@@ -295,6 +300,12 @@ export default async function InfoGamePage({
                         </div>
                     </div>
                 </div>
+                )}
+                {infoGame.length === 0 ? (
+                <div className="text-center py-12">
+                    <p className="text-gray-500 text-lg"></p>
+                </div>
+                ) : (
                 <div className="mb-8 text-secondary-foreground">
                     {infoGame.map((infogame, index) => (
                     <h1 key={index} className="text-3xl font-bold mb-2">Historial del precio de {infogame.title}</h1>
@@ -309,6 +320,7 @@ export default async function InfoGamePage({
                         </CardContent>
                     </Card>
                 </div>
+                )}
             </main>
             <Footer />
         </div>
