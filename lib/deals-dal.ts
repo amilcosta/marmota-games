@@ -124,7 +124,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
 export async function toggleFavoriteDTO(gameId: number, platformId: string): Promise<boolean> {
   //const currentUser = await getCurrentUser()
 
-  const platform_id = platformId=='switch1' ? 1 : platformId=='switch2' ? 2 : platformId=='ps4' ? 4 : 3;
+  /*const platform_id = platformId=='switch1' ? 1 : platformId=='switch2' ? 2 : platformId=='ps4' ? 4 : 3;
   const client = await pool.connect();
 
   let values = [];
@@ -152,7 +152,7 @@ export async function toggleFavoriteDTO(gameId: number, platformId: string): Pro
 
   }
 
-  
+  */
   //if (!currentUser) {
   //  throw new Error("Authentication required")
  // }
@@ -176,7 +176,7 @@ export async function toggleFavoriteDTO(gameId: number, platformId: string): Pro
     return true
   }*/
 
-  client.release();  
+  //client.release();  
   return true;
 }
 
