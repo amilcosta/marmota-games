@@ -31,7 +31,21 @@ export default async function HomePage() {
         ) : (
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-secondary-foreground mb-2">Juegos más Populares</h1>
-            
+            <Carousel opts={{ align: "start", }} className="w-full">
+              <CarouselContent>
+                {gameDeals.map((game) => (
+                  <CarouselItem key={game.id} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      
+                        <GameDealCard key={game.id} game={game} />
+                      
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         )}
           <div className="mb-8">

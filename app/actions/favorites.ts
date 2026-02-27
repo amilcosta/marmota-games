@@ -1,3 +1,5 @@
+import { toggleFavoriteDTO } from "@/lib/deals-dal"
+import { revalidatePath } from "next/cache"
 
 export async function toggleFavoriteAction(gameId: number, platform: string) {
   try {
