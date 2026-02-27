@@ -66,7 +66,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
   const client = await pool.connect();
   const { rows } = await client.query('SELECT j."idJuego" as game_id,j.nombrereal as title, c.nombre as platform, j."idJuego" as deal_id, j.nombre, '+
     'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, '+
-    'pt."enlaceTienda" as deal_url, c."logoConsola" as logo_console '+
+    'pt."enlaceTienda" as deal_url, c."logoConsola" as logo_console, favorito '+
     'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
     'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
     'and pt.activo=1 and pt."fkConsola"=c."idConsola" limit 5'
@@ -97,7 +97,7 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
         platformName: platform_name,
         imageUrl: row.image_url,
         deals: [],
-        isFavorite: currentUser ? row.is_favorite : undefined,
+        isFavorite: row.favorito,
         logoConsole: row.logo_console,
         logoStore: row.logo_store,
       })
@@ -121,9 +121,38 @@ export async function getGameDealsDTO(): Promise<GameDealDTO[]> {
   return Array.from(gamesMap.values())
 }
 
-export async function toggleFavoriteDTO(gameId: number): Promise<boolean> {
+export async function toggleFavoriteDTO(gameId: number, platformId: string): Promise<boolean> {
   //const currentUser = await getCurrentUser()
 
+  const platform_id = platformId=='switch1' ? 1 : platformId=='switch2' ? 2 : platformId=='ps4' ? 4 : 3;
+  const client = await pool.connect();
+
+  let values = [];
+  values.push(gameId);
+  values.push(platform_id);
+  const getpop = 'SELECT popular FROM "DETALLEJUEGO" WHERE "fkJuegoDetalle"=$1 and "fkConsolaDetalle"=$2 ';
+  const result = await client.query(getpop,values);
+
+  let sumar=[];
+  let addfavorito= [];
+  for (const row of result.rows) {
+    let sumapopular: number = parseInt(row.popular)+ 1;
+    sumar.push(sumapopular);
+    sumar.push(gameId);
+    sumar.push(platform_id);
+    //const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion", numero) values ($1, CURRENT_DATE, $2) RETURNING "idUsuario"';
+    const updateFavorite = 'UPDATE "DETALLEJUEGO" set popular=$1 WHERE "fkJuegoDetalle"=$2 and "fkConsolaDetalle"=$3 ';
+    const result1 = await client.query(updateFavorite, sumar);
+
+    addfavorito.push(1);
+    addfavorito.push(gameId);
+    addfavorito.push(platform_id);
+    const setFavorite = 'UPDATE "DETALLEJUEGO" set favorito=$1 WHERE "fkJuegoDetalle"=$2 and "fkConsolaDetalle"=$3 ';
+    const result2 = await client.query(setFavorite, addfavorito);
+
+  }
+
+  
   //if (!currentUser) {
   //  throw new Error("Authentication required")
  // }
@@ -146,7 +175,9 @@ export async function toggleFavoriteDTO(gameId: number): Promise<boolean> {
     `
     return true
   }*/
- return true;
+
+  client.release();  
+  return true;
 }
 
 /*export async function getUserFavoritesDTO(): Promise<GameDealDTO[]> {

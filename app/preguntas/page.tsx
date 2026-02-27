@@ -18,7 +18,7 @@ export default async function PreguntasFrecuentes() {
                     
                     <Accordion type="single" defaultValue="nace" collapsible >
                         <AccordionItem value="nace" className="hover:bg-primary/30">
-                            <AccordionTrigger className="text-secondary-foreground text-2xl">¿Cómo nació MarmotaPay?</AccordionTrigger>
+                            <AccordionTrigger className="text-secondary-foreground high-font">¿Cómo nació MarmotaPay?</AccordionTrigger>
                             <AccordionContent className="high-font">
                                 Nació de una simple necesidad: Comprar el videojuego que queremos al mejor precio posible.<br></br>
                                 Como muchos, hemos pasado horas navegando en internet buscando un juego que queremos, en esa búsqueda del “tesoro”

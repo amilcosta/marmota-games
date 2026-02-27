@@ -86,7 +86,7 @@ export default async function PlanPage() {
                                 <CardTitle className="text-center">Plan Premium</CardTitle>
                             </CardHeader>
                             <CardContent className="medium-bold">
-                                <div className="flex text-2xl">CLP $3.000/Mes </div>
+                                <div className="flex text-2xl">CLP $2.000/Mes </div>
                                 <div className="flex text-xs text-gray-600">Incluye impuestos </div>
                                 <br></br>
                                 <hr></hr>

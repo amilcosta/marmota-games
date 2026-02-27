@@ -44,7 +44,8 @@ export interface GameStores{
     store: string,
     logoStore: string,
     dealUrl: string,
-    discountPercentage: number
+    discountPercentage: number,
+    color: string
 }
 
 export async function getGameYear25(): Promise<GameAwardDTO[]>{
@@ -494,16 +495,22 @@ export async function getGamesTienda(juegoId: Number): Promise<GameStores[]> {
                 if(discount<0){
                     discount = 0;
                 }
+                let platform_name= row.platform=="switch1" ? "Nintendo Switch 1" : row.platform=="switch2" ? "Nintendo Switch 2" : 
+                row.platform=="ps4" ? "PlayStation 4" : "PlayStation 5";
+                let fontcolor= row.platform=="switch1" ? "red" : row.platform=="switch2" ? "red" : row.platform=="ps4" ? "green" : 
+                "gray";
+
                 gamesMap.set(countrows,{
                     title: row.nombre,
-                    platform: row.platform,
+                    platform: platform_name,
                     platformUrl: row.logo,
                     price: row.precio,
                     originalPrice: row.original_price,
                     store: row.store_name,
                     logoStore: row.logo_store,
                     dealUrl: row.deal_url,
-                    discountPercentage: discount
+                    discountPercentage: discount,
+                    color: fontcolor
                 });
                  countrows=countrows+1;
             }

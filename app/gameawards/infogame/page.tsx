@@ -102,7 +102,9 @@ export default async function InfoGameAwardsPage({
                                     </AccordionTrigger>
                                     <AccordionTrigger className="width-info-title h-[100%] float-left pl-1 small-font cursor-default"> 
                                         <span className="w-[100%] flex text-left">{storegame.title}</span>
-                                        <span className="w-[100%] flex"><img className="w-[10%] h-[10%]" src={storegame.platformUrl}/></span>
+                                        <span className="w-[100%] flex"><img className="w-[10%] h-[10%]" src={storegame.platformUrl}/> 
+                                         - <p className={`text-${storegame.color}-500`}>{storegame.platform}</p>
+                                        </span>
                                     </AccordionTrigger>
                                     <AccordionTrigger className="width-info-price h-[100%] float-left cursor-default">
                                     
