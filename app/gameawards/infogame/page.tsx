@@ -91,6 +91,11 @@ export default async function InfoGameAwardsPage({
                             ))}
                         </div>
                         <div className="col-span-2 text-secondary-foreground m-4">
+                            {juegosTienda.length === 0 ? (
+                            <div className="text-center py-12">
+                                <p className="text-gray-500 text-lg">No hay ofertas de Tienda por el momento.</p>
+                            </div>
+                            ) : (
                             <Accordion className="w-[100%] mt-12 rounded-md bg-squirtle-gray shadow-[0_2px_10px] shadow-black/5" type="single">
                             {juegosTienda.map((storegame, index) => (
                                 
@@ -132,6 +137,7 @@ export default async function InfoGameAwardsPage({
                                 </AccordionItem>
                             ))}
                             </Accordion>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -13,9 +13,9 @@ import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
 
 
 export default function SignUpPage() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [isDialogOpen, setIsDialogOpen] = useState(true);
+  //const [showModal, setShowModal] = useState(false);
+  //const [modalMessage, setModalMessage] = useState('');
+  //const [isDialogOpen, setIsDialogOpen] = useState(true);
 
   /*const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     //event.preventDefault();
