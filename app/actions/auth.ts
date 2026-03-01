@@ -1,6 +1,6 @@
 "use server"
 
-import {  signUp, signOut } from "@/lib/auth"
+import {  signUp} from "@/lib/auth"
 import { redirect, RedirectType } from "next/navigation";
 
 export interface RespuestaDTO {

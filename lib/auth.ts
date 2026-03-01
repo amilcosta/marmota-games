@@ -1,6 +1,5 @@
 import { cache } from "react"
 import { cookies } from "next/headers"
-import { neon } from "@neondatabase/serverless"
 import bcrypt from "bcryptjs"
 import { Pool } from 'pg';
 import axios from 'axios';
@@ -118,7 +117,7 @@ export async function signUp(email: string, cel: string) {//password: string
   //return { message: "Se ha registrado el correo exitosamente", code: 200 };
 }
 
-export async function signOut() {
+/*export async function signOut() {
   const cookieStore = await cookies()
   cookieStore.delete("auth_token")
-}
+}*/
