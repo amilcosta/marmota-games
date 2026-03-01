@@ -53,7 +53,7 @@ export default function SignUpPage() {
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Registro</CardTitle>
-            <CardDescription>Crear una cuenta para ponernos en contacto contigo y gestionar el pago para ser parte de cuenta premium y unirse al grupo privado de Telegram</CardDescription>
+            <CardDescription>Déjanos tu información de contacto para comunicarnos contigo y gestionar el pago para ser parte de cuenta premium y unirse al grupo privado de Telegram</CardDescription>
           </CardHeader>
           <CardContent>
             <form action={dispatch} className="space-y-4">
@@ -67,7 +67,7 @@ export default function SignUpPage() {
                 <Input id="numero" name="numero" type="number" required placeholder="Ingresar número" className="float-left w-[75%] ml-[1em]" />
               </div>
               
-              <Button type="submit" className="w-full bg-accent" onClick={() => setIsDialogOpen(true)}>
+              <Button type="submit" className="w-full bg-accent" >
                 Registrar
               </Button>
             </form>

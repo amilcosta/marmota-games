@@ -43,7 +43,7 @@ export async function signUpActionOld(formData):Promise<RespuestaDTO> {
 }
 
 export async function signUpAction( prevState: { url: string },formData: FormData) {
- 
+  console.log("inicio auh");
   const email = formData.get("email") as string;
   const numero = "56"+formData.get("numero") as string;
 
