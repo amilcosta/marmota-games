@@ -1,5 +1,5 @@
-import { cache } from "react"
-import { cookies } from "next/headers"
+//import { cache } from "react"
+//import { cookies } from "next/headers"
 import bcrypt from "bcryptjs"
 import { Pool } from 'pg';
 import axios from 'axios';

@@ -20,7 +20,7 @@ export async function signInAction(formData: FormData) {
   }
 }
 
-export async function signUpActionOld(formData):Promise<RespuestaDTO> {
+export async function signUpActionOld(formData:any):Promise<RespuestaDTO> {
     const data = Object.fromEntries(formData);
     //const email = formData.get("email") as string;
     const email = data.email;
@@ -53,7 +53,7 @@ export async function signUpAction( prevState: { url: string },formData: FormDat
 
 }
 
-export async function signOutAction() {
+/*export async function signOutAction() {
   await signOut()
   redirect("/auth/signin")
-}
+}*/
