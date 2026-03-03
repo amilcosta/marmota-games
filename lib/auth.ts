@@ -76,9 +76,9 @@ export async function signUp(email: string, cel: string) {//password: string
     return  { message: "El correo ya se encuentra registrado", code: 400 };
   }
   
-  const toknumber= process.env.TOKEN_NUMBER;
-  const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion", numero) values ($1, CURRENT_DATE, pgp_sym_encrypt($2, $3)) RETURNING "idUsuario"';
-  const valuesuser = [email,cel,toknumber];
+  //const toknumber= process.env.TOKEN_NUMBER;
+  const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion") values ($1, CURRENT_DATE) RETURNING "idUsuario"';
+  const valuesuser = [email];
 
   const result1 = await client.query(nuevouser, valuesuser);
 
