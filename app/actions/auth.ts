@@ -1,6 +1,7 @@
 "use server"
 
 import {  signUp} from "@/lib/auth";
+import { FormState } from "react-hook-form";
 //import { redirect, RedirectType } from "next/navigation";
 
 export interface RespuestaDTO {
@@ -42,8 +43,14 @@ export async function signUpActionOld(formData:any):Promise<RespuestaDTO> {
   
 }*/
 
-export async function signUpAction( prevState: { url: string },formData: FormData) {
+type FormState = {
+  message: string | null;
+  code: number
+};
+
+export async function signUpAction( prevState: FormState,formData: FormData) {
   console.log("inicio auh");
+  
   const email = formData.get("email") as string;
   const numero = "56"+formData.get("numero") as string;
 

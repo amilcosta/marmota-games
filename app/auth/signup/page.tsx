@@ -1,5 +1,5 @@
 "use client"
-import { signUpAction } from "@/app/actions/auth"
+import { signUpAction } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -32,7 +32,7 @@ export default function SignUpPage() {
     }
   };*/
   
-  const [state, dispatch] = useActionState(signUpAction, { email: "", numero:"" });
+  const [state, dispatch, pending] = useActionState(signUpAction, { email: "", numero:"" });
 
 
   return (
