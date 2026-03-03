@@ -49,15 +49,14 @@ type FormState = {
 };
 
 export async function signUpAction( prevState: FormState,formData: FormData): Promise<FormState> {
-  console.log("inicio auh");
   
-  //const email = formData.get("email") as string;
-  //const numero = "56"+formData.get("numero") as string;
+  const email = formData.get("email") as string;
+  const numero = "56"+formData.get("numero") as string;
 
 
-  //const resul = await signUp(email, numero);
-  //return {message: resul?.message? resul.message : "", code: resul?.code ? resul.code : 200};
-  return { message:"Test funciona ", code:200}
+  const resul = await signUp(email, numero);
+  return {message: resul?.message? resul.message : "", code: resul?.code ? resul.code : 200};
+  //return { message:"Test funciona ", code:200}
 }
 
 /*export async function signOutAction() {
