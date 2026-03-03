@@ -56,6 +56,7 @@ export async function signUpAction( prevState: FormState,formData: FormData): Pr
 
   const resul = await signUp(email, numero);
   return {message: resul?.message? resul.message : "", code: resul?.code ? resul.code : 200};
+  
   //return { message:"Test funciona ", code:200}
 }
 

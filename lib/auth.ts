@@ -78,13 +78,12 @@ export async function signUp(email: string, cel: string) {//password: string
   
   
   //const toknumber= process.env.TOKEN_NUMBER;
-  /*const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion") values ($1, CURRENT_DATE) RETURNING "idUsuario"';
+  const nuevouser = 'INSERT INTO "USUARIO" (correo, "fechaCreacion") values ($1, CURRENT_DATE) RETURNING id ';
   const valuesuser = [email];
 
   const result1 = await client.query(nuevouser, valuesuser);
 
   //return await signIn(email, password)
-  */
   client.release();
   return { message: "Solo se consulto el correo", code: 200 };
 
