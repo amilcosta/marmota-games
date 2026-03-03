@@ -91,7 +91,16 @@ export default function SignUpPage() {
           </DialogContent>
         </DialogPortal>
       </Dialog>
-        : "" }
+        : state?.code == 200 ?
+        <Dialog defaultOpen>
+        <DialogPortal>
+          <DialogOverlay></DialogOverlay>
+          <DialogContent>
+            <DialogTitle>Registro</DialogTitle>
+            <DialogDescription>El usuario ya existe.</DialogDescription>
+          </DialogContent>
+        </DialogPortal>
+      </Dialog> : ""}
     </div>
   )
 }
