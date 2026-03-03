@@ -88,6 +88,13 @@ export default function SignUpPage() {
           <DialogContent>
             <DialogTitle>Registro</DialogTitle>
             <DialogDescription>Usuario se ha registrado exitosamente. En breve nos pondremos en cotacto contigo.</DialogDescription>
+            <DialogClose asChild>
+              <a href="/"  rel="noopener noreferrer">
+                  <Button  className="cursor-pointer w-[50%] small-font bg-accent block m-auto">
+                    Aceptar
+                  </Button>  
+              </a> 
+            </DialogClose>
           </DialogContent>
         </DialogPortal>
       </Dialog>
@@ -98,6 +105,13 @@ export default function SignUpPage() {
           <DialogContent>
             <DialogTitle>Registro</DialogTitle>
             <DialogDescription>El usuario ya existe.</DialogDescription>
+            <DialogClose asChild>
+              <a href="/auth/signup"  rel="noopener noreferrer">
+                  <Button  className="cursor-pointer w-[50%] small-font bg-accent block m-auto">
+                    Aceptar
+                  </Button>  
+              </a> 
+            </DialogClose>
           </DialogContent>
         </DialogPortal>
       </Dialog> : ""}
