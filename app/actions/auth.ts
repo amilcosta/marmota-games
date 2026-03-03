@@ -1,14 +1,14 @@
 "use server"
 
-import {  signUp} from "@/lib/auth"
-import { redirect, RedirectType } from "next/navigation";
+import {  signUp} from "@/lib/auth";
+//import { redirect, RedirectType } from "next/navigation";
 
 export interface RespuestaDTO {
   message: String,
   code: Number
 }
 
-export async function signInAction(formData: FormData) {
+/*export async function signInAction(formData: FormData) {
   try {
     const email = formData.get("email") as string
     const password = formData.get("password") as string
@@ -40,7 +40,7 @@ export async function signUpActionOld(formData:any):Promise<RespuestaDTO> {
     const respuesta: RespuestaDTO = {message: 'Invalid', code: 400};
     return respuesta;
   
-}
+}*/
 
 export async function signUpAction( prevState: { url: string },formData: FormData) {
   console.log("inicio auh");
