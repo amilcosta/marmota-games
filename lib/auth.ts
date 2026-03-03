@@ -77,13 +77,13 @@ export async function signUp(email: string, cel: string) {//password: string
   }
   
   //const toknumber= process.env.TOKEN_NUMBER;
-  const nuevouser = `INSERT INTO "USUARIO" ("idUsuario",correo, "fechaCreacion") values (nextval('"USUARIO_idUsuario_seq"'),$1, CURRENT_DATE) RETURNING "idUsuario" `;
+  /*const nuevouser = `INSERT INTO "USUARIO" ("idUsuario",correo, "fechaCreacion") values (nextval('"USUARIO_idUsuario_seq"'),$1, CURRENT_DATE) RETURNING "idUsuario" `;
   const valuesuser = [email];
 
   const result1 = await client.query(nuevouser, valuesuser);
 
   //return await signIn(email, password)
-  client.release();
+  client.release();*/
 
   /*const resend = new Resend(process.env.RESEND_API_KEY);
   const { data, error } = await resend.emails.send({
@@ -97,9 +97,9 @@ export async function signUp(email: string, cel: string) {//password: string
     return console.log(error);
   }*/
 
-  /*const BOT_TOKEN = process.env.TELEGRAM_TOKEN;
+  const BOT_TOKEN = process.env.TELEGRAM_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_PRIVATE_GROUP_ID;
-  const message = "El usuario "+email+" ha pedido solicitud de ser premium";
+  const message = "El usuario "+email+" ha pedido solicitud de ser premium con num:"+cel;
   const url = `https://api.telegram.org${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=markdown`;
 
   try {
@@ -112,9 +112,9 @@ export async function signUp(email: string, cel: string) {//password: string
       }
   }catch (error) {
     return { message: "Error Envio mensaje", code: 400 };
-  }*/
+  }
 
-  return { message: "Se ha registrado el correo exitosamente", code: 200 };
+  //return { message: "Se ha registrado el correo exitosamente", code: 200 };
 }
 
 /*export async function signOut() {

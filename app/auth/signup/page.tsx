@@ -91,7 +91,7 @@ export default function SignUpPage() {
           </DialogContent>
         </DialogPortal>
       </Dialog>
-        : state?.code == 200 ?
+        : state?.code == 400 ?
         <Dialog defaultOpen>
         <DialogPortal>
           <DialogOverlay></DialogOverlay>
