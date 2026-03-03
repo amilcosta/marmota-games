@@ -1,7 +1,7 @@
 "use server"
 
 import {  signUp} from "@/lib/auth";
-import { FormState } from "react-hook-form";
+//import { FormState } from "react-hook-form";
 //import { redirect, RedirectType } from "next/navigation";
 
 export interface RespuestaDTO {
@@ -44,11 +44,11 @@ export async function signUpActionOld(formData:any):Promise<RespuestaDTO> {
 }*/
 
 type FormState = {
-  message: string | null;
+  message: string ;
   code: number
 };
 
-export async function signUpAction( prevState: FormState,formData: FormData) {
+export async function signUpAction( prevState: FormState,formData: FormData): Promise<FormState> {
   console.log("inicio auh");
   
   const email = formData.get("email") as string;
@@ -56,7 +56,7 @@ export async function signUpAction( prevState: FormState,formData: FormData) {
 
 
   const resul = await signUp(email, numero);
-  return resul;//{message: 'Invalid', code: 400};
+  return {message: resul?.message? resul.message : "", code: resul?.code ? resul.code : 200};
 
 }
 
