@@ -153,7 +153,7 @@ export default async function PlanPage() {
                                 <div className="mt-9">
                                     <a href="/auth/signup" target="_blank" rel="noopener noreferrer">
                                         <Button  className="cursor-pointer w-[50%] small-font bg-accent block m-auto">
-                                                Registrarse
+                                                Unirse
                                         </Button>  
                                     </a> 
                                 </div>
