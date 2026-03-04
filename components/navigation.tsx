@@ -1,6 +1,4 @@
-//import { getCurrentUser } from "@/lib/auth"
 "use client"
-import { signOutAction } from "@/app/actions/auth"
 import { Button } from "@/components/ui/button"
 import { Gamepad2, Heart, Home, LogOut, User } from "lucide-react"
 import Link from "next/link";
@@ -21,7 +19,7 @@ export default function Navigation() {
     { name: "Home", href: "/" },
     { name: "Buscar Videojuegos", href: "/search" },
     //{ name: "Comparar Videojuegos", href: "/compare" },
-    //{ name: "Cofre de la Marmota", href: "/planes"},
+    { name: "Cofre de la Marmota", href: "/planes"},
     { name: "Contactanos", href: "/contact" },
   ];
 
@@ -120,11 +118,11 @@ export default function Navigation() {
                   <Button className="medium-font w-[100%] bg-accent">Planes</Button>
                 </Link> 
             </div>*/}
-            {/*<div className="hidden lg:block">            
+            <div className="hidden lg:block">            
                 <Link href="/planes" className="flex items-center space-x-2 w-[100%]">
                   <Button className="medium-font w-[100%] bg-accent">Cofre de la Marmota</Button>
                 </Link>
-            </div>*/}
+            </div>
             <div className="hidden lg:block">            
                 <Link href="/search" className="flex items-center space-x-2 w-[100%]">
                   <Button className="medium-font w-[100%] bg-accent">Buscar Videojuegos</Button>
