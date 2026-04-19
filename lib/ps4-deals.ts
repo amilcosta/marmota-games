@@ -81,7 +81,7 @@ export async function getPs4DTO(): Promise<GameDealDTO[]> {
         'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url,c."logoConsola" as logo_console '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-        'and c."idConsola"=4 and pt.activo=1 and pt."fkConsola"=4 limit 5');
+        'and c."idConsola"=4 and c."idConsola" =pt."fkConsola" and pt.activo=1 and pt."fkConsola"=4 limit 5');
     const gamesMap = new Map<number, GameDealDTO>();
 
     for (const row of rows) {
@@ -131,7 +131,7 @@ export async function getNewPs4DTO(): Promise<GameDealDTO[]> {
         'c."logoConsola" as logo_console, t."logoTienda" as logo_store, t."idTienda" as store_id '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-        'and c."idConsola"=4 and pt.precio<=pt."precioViejo" and pt.activo=1 and pt."fkConsola"=4 '+ 
+        'and c."idConsola"=4 and pt.precio<pt."precioViejo" and pt.activo=1 and pt."fkConsola"=4 '+ 
         'order by pt.fecha desc, precio asc limit 10');
     const gamesMap = new Map<string, GameDealDTO>();
     for (const row of rows) {

@@ -59,10 +59,18 @@ export default async function Switch1Page() {
                     </AccordionTrigger>
                     <AccordionTrigger className="with-row h-[100%] float-left pl-1 small-font"> 
                       <span className="w-[100%] flex text-left">{newsswitch.title}</span>
-                      <span className="w-[100%] flex"><img width="20px" src={newsswitch.logoConsole} className="mr-2"/>  - 
-                      {newsswitch.deals.map((deal) => (
-                        <img key={deal.id} width="20px" src={newsswitch.logoStore} className="ml-2" title={deal.storeName}/>
-                      ))}
+                      <span className="w-[100%] flex">
+                        <nav className="w-[70%]">
+                          <svg className="size-8 svg-icon svg-platform-nintendo-switch-1 width-icon-search pt-[3px] float-left" >
+                          <g fill="red">
+                              <path d="M8.172 8.005c0-3.833.01-6.976.02-6.985.01-.011.59-.02 1.285-.02 1.009 0 1.322.009 1.525.044a3.599 3.599 0 0 1 2.952 2.91c.04.212.046.708.046 4.034 0 3.553.004 3.97-.107 4.355-.02.066-.043.13-.07.211a3.62 3.62 0 0 1-2.998 2.422c-.278.028-2.528.04-2.606.011-.044-.018-.047-.658-.047-6.982Zm4.091.235a1.418 1.418 0 0 0-.974-.905 1.408 1.408 0 0 0-1.695.94 1.663 1.663 0 0 0-.013.818 1.428 1.428 0 0 0 1.708.968c.447-.119.795-.44.972-.9.096-.249.098-.648.002-.92ZM3.246 3.903c-.182.035-.46.174-.608.304-.305.263-.455.638-.432 1.078.011.23.026.29.119.476.135.281.341.487.623.626.194.096.243.108.496.116.228.009.31 0 .464-.052.629-.212 1.009-.823.9-1.45a1.33 1.33 0 0 0-1.562-1.098Z"></path>
+                              <path d="M2.997 1.047a3.619 3.619 0 0 0-2.87 2.638c-.127.49-.136.777-.122 4.578.008 3.492.012 3.572.07 3.842.322 1.452 1.354 2.489 2.82 2.83.193.044.435.053 2.004.062 1.624.01 1.792.008 1.835-.035.044-.044.047-.604.047-6.948 0-4.703-.01-6.918-.03-6.959-.028-.052-.078-.055-1.775-.052-1.381.003-1.796.012-1.978.044ZM5.622 13.88l-1.181-.015c-1.087-.01-1.203-.017-1.42-.072a2.458 2.458 0 0 1-1.82-1.896c-.065-.294-.065-7.508-.004-7.795A2.49 2.49 0 0 1 2.7 2.31c.383-.154.56-.172 1.8-.175l1.122-.003V13.88h.001Zm18.706"></path>
+                          </g> 
+                          </svg> <p className="float-left small-font text-red-600">Nintendo Switch 1</p><p className="float-left pl-[1em]"> - </p> 
+                          {newsswitch.deals.map((deal) => (                               
+                              <img key={deal.id} width="20px" src={newsswitch.logoStore} className="ml-2 h-[25px] float-left" title={deal.storeName}/>                                
+                            ))}
+                        </nav>
                       </span>
                     </AccordionTrigger>
                     <AccordionTrigger className="with-row-price h-[100%] float-left">
@@ -92,10 +100,19 @@ export default async function Switch1Page() {
                   </AccordionTrigger>
                   <AccordionTrigger className="with-row h-[100%] float-left pl-1 small-font"> 
                     <span className="w-[100%] flex text-left ">{bestswitch.title}</span>
-                    <span className="w-[100%] flex"><img width="20px" src={bestswitch.logoConsole} className="mr-2"/>  - 
-                      {bestswitch.deals.map((deal) => (
-                      <img key={deal.id} width="20px" src={bestswitch.logoStore} className="ml-2" title={deal.storeName}/>
-                      ))}</span>
+                    <span className="w-[100%] flex">
+                      <nav className="w-[70%]">
+                          <svg className="size-8 svg-icon svg-platform-nintendo-switch-1 width-icon-search pt-[3px] float-left" >
+                          <g fill="red">
+                              <path d="M8.172 8.005c0-3.833.01-6.976.02-6.985.01-.011.59-.02 1.285-.02 1.009 0 1.322.009 1.525.044a3.599 3.599 0 0 1 2.952 2.91c.04.212.046.708.046 4.034 0 3.553.004 3.97-.107 4.355-.02.066-.043.13-.07.211a3.62 3.62 0 0 1-2.998 2.422c-.278.028-2.528.04-2.606.011-.044-.018-.047-.658-.047-6.982Zm4.091.235a1.418 1.418 0 0 0-.974-.905 1.408 1.408 0 0 0-1.695.94 1.663 1.663 0 0 0-.013.818 1.428 1.428 0 0 0 1.708.968c.447-.119.795-.44.972-.9.096-.249.098-.648.002-.92ZM3.246 3.903c-.182.035-.46.174-.608.304-.305.263-.455.638-.432 1.078.011.23.026.29.119.476.135.281.341.487.623.626.194.096.243.108.496.116.228.009.31 0 .464-.052.629-.212 1.009-.823.9-1.45a1.33 1.33 0 0 0-1.562-1.098Z"></path>
+                              <path d="M2.997 1.047a3.619 3.619 0 0 0-2.87 2.638c-.127.49-.136.777-.122 4.578.008 3.492.012 3.572.07 3.842.322 1.452 1.354 2.489 2.82 2.83.193.044.435.053 2.004.062 1.624.01 1.792.008 1.835-.035.044-.044.047-.604.047-6.948 0-4.703-.01-6.918-.03-6.959-.028-.052-.078-.055-1.775-.052-1.381.003-1.796.012-1.978.044ZM5.622 13.88l-1.181-.015c-1.087-.01-1.203-.017-1.42-.072a2.458 2.458 0 0 1-1.82-1.896c-.065-.294-.065-7.508-.004-7.795A2.49 2.49 0 0 1 2.7 2.31c.383-.154.56-.172 1.8-.175l1.122-.003V13.88h.001Zm18.706"></path>
+                          </g> 
+                          </svg> <p className="float-left small-font text-red-600">Nintendo Switch 1</p><p className="float-left pl-[1em]"> - </p> 
+                          {bestswitch.deals.map((deal) => (                               
+                              <img key={deal.id} width="20px" src={bestswitch.logoStore} className="ml-2 h-[25px] float-left" title={deal.storeName}/>                                
+                            ))}
+                        </nav>
+                    </span>
                   </AccordionTrigger>
                   <AccordionTrigger className="with-row-price h-[100%] float-left">
                     {bestswitch.deals.map((deal, index) => (

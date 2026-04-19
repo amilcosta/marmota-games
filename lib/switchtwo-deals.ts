@@ -81,7 +81,7 @@ export async function getSwitchTwoDTO(): Promise<GameDealDTO[]> {
         'j.img_url as image_url, t."nombreTienda" as store_name, pt.precio as sale_price, pt."precioViejo" as original_price, pt."enlaceTienda" as deal_url,c."logoConsola" as logo_console '+
         'FROM "JUEGO" j, "CONSOLA" c, "DETALLEJUEGO" dj, "TIENDA" t, "PRECIOTIENDA" pt '+
         'WHERE j."idJuego"= dj."fkJuegoDetalle" and dj."fkConsolaDetalle"=c."idConsola" and j."idJuego"=pt."fkJuego" and pt."fkTienda"=t."idTienda" '+
-        'and c."idConsola"=2 and pt.activo=1 limit 5');
+        'and c."idConsola"=2 and c."idConsola" =pt."fkConsola" and pt.activo=1 limit 5');
     const gamesMap = new Map<number, GameDealDTO>();
 
     for (const row of rows) {

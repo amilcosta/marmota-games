@@ -6,6 +6,9 @@ body {
   /*font-family: Arial, Helvetica, sans-serif;*/
   font-family:"Geist Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif
 }
+.xsmall-font {
+  font-size: 13px;
+}
 .small-font {
   font-size: 14px;
 }
@@ -45,7 +48,7 @@ body {
 }
 
 .height-row{
-  height: 60px;
+  height: 70px;
 }
 .with-row{
   width: 64%;
@@ -169,6 +172,9 @@ body {
 }
 
 @media (max-width:950px) {
+  .xsmall-font {
+    font-size: 10px;
+  }
   .small-font, .text-gray-500{
     font-size: 11px;
   }
@@ -227,7 +233,7 @@ body {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
   .width-icon-search{
-    width: 9%;
+    width: 12%;
   }
   .width-foot{
     width: 100%;
