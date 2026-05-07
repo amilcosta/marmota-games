@@ -193,14 +193,14 @@ export default async function InfoGamePage({
                                                 </svg>
                                             </div>
                                             
-                                            <div className="flex flex-wrap w-[100%] mt-1 mb-1"> Generos<span className="pr-1">:</span>
+                                            <div className="flex flex-wrap w-[100%] mt-1 mb-1"> Gésneros<span className="pr-1">:</span>
                                                 {infogame.genre.map((gen, index) => (
                                                     <span className="pr-1 text-gray-300 bg-secondary round-price" key={index}>{gen}</span>
                                                 ))}
                                             </div>
 
                                             <div className="flex flex-wrap w-[100%]">
-                                                Clasificacion:
+                                                Clasificación:
                                             </div>
                                             <div className="flex flex-wrap w-[100%]">
                                                 {infogame.clasificationList.map((clasifica, index) =>(
@@ -210,7 +210,7 @@ export default async function InfoGamePage({
                                                 ))}
                                             </div>
                                             <div className="flex flex-wrap w-[100%] mt-2">
-                                                Descripcion:
+                                                Descripción:
                                             </div>
                                             <div className="flex flex-wrap w-[100%] text-gray-500">{infogame.description}</div>
                                         </div>
@@ -264,7 +264,7 @@ export default async function InfoGamePage({
                         <div className="w-[100%] mt-12 text-secondary-foreground ">
                             <Card className="bg-squirtle-gray pos-sticky">
                                 <CardHeader>
-                                    <CardTitle>Precio mas economico</CardTitle>
+                                    <CardTitle>Precio mas económico</CardTitle>
                                 </CardHeader>
                                 <CardContent className="medium-bold">
                                     {bestOffer.map((best, index) => (

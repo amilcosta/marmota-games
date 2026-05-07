@@ -180,7 +180,8 @@ export default async function InfoGamePage({
                                         <div key={index}> 
                                             <div className="flex ">Lanzamiento: {infogame.releaseDate}</div>
                                             <div className="flex "> Plataforma: 
-                                                <svg className="h-[30px] svg-icon svg-platform-nintendo-switch-1 pt-2 pl-2" >
+                                                <span className="pl-[4px]  text-red-600">Nintendo switch</span>
+                                                <svg className="h-[30px] svg-icon svg-platform-nintendo-switch-1 pt-1 pl-2" >
                                                     {infogame.platformid ==1 ? (
                                                         
                                                     <g fill="red">
@@ -197,16 +198,17 @@ export default async function InfoGamePage({
                                                         </g>
                                                     ): ''}
                                                 </svg>
+                                                
                                             </div>
                                             
-                                            <div className="flex flex-wrap w-[100%] mt-1 mb-1"> Generos<span className="pr-1">:</span>
+                                            <div className="flex flex-wrap w-[100%] mt-1 mb-1"> Géneros<span className="pr-1">:</span>
                                                 {infogame.genre.map((gen, index) => (
                                                     <span className="pr-1 text-gray-300 bg-secondary round-price" key={index}>{gen}</span>
                                                 ))}
                                             </div>
 
                                             <div className="flex flex-wrap w-[100%]">
-                                                Clasificacion:
+                                                Clasificación:
                                             </div>
                                             <div className="flex flex-wrap w-[100%]">
                                                 {infogame.clasificationList.map((clasifica, index) =>(
@@ -216,9 +218,9 @@ export default async function InfoGamePage({
                                                 ))}
                                             </div>
                                             <div className="flex flex-wrap w-[100%] mt-2">
-                                                Descripcion:
+                                                Descripción:
                                             </div>
-                                            <div className="flex flex-wrap w-[100%] text-gray-500">{infogame.description}</div>
+                                            <div className="flex flex-wrap w-[100%] text-gray-600">{infogame.description}</div>
                                         </div>
                                         
                                         ))}
@@ -271,12 +273,12 @@ export default async function InfoGamePage({
                         <div className="w-[100%] mt-12 text-secondary-foreground ">
                             <Card className="bg-squirtle-gray pos-sticky">
                                 <CardHeader>
-                                    <CardTitle>Precio mas economico</CardTitle>
+                                    <CardTitle>Precio mas económico</CardTitle>
                                 </CardHeader>
                                 <CardContent className="medium-bold">
                                     {bestOffer.map((best, index) => (
                                     <div key={index}> 
-                                        <div className="flex "><img width="50px" src={best.logoStore} className="ml-2" title={best.nombreStore}/></div>
+                                        <div className="flex "><img width="50px" src={best.logoStore} className="ml-2 circle-image" title={best.nombreStore}/></div>
                                         <div className="flex "> Tienda: {best.nombreStore.toUpperCase()}
                                         </div>
                                         {best.deals.map((deal) => (

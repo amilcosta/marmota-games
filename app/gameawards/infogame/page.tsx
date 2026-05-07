@@ -68,7 +68,7 @@ export default async function InfoGameAwardsPage({
                                     Nombre: {matchgame.title}
                                 </div>
                                 <div className="w-[100%]">
-                                    Generos: 
+                                    Géneros: 
                                     {matchgame.genre.map((gen, index) => (
                                         <span className="pr-1 text-gray-300 bg-secondary round-price" key={index}>{gen}</span>
                                     ))}

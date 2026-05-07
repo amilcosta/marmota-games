@@ -68,7 +68,7 @@ export default async function Switch1Page() {
                           </g> 
                           </svg> <p className="float-left small-font text-red-600">Nintendo Switch 1</p><p className="float-left pl-[1em]"> - </p> 
                           {newsswitch.deals.map((deal) => (                               
-                              <img key={deal.id} width="20px" src={newsswitch.logoStore} className="ml-2 h-[25px] float-left" title={deal.storeName}/>                                
+                              <img key={deal.id} width="20px" src={newsswitch.logoStore} className="ml-2 h-[25px] float-left circle-image" title={deal.storeName}/>                                
                             ))}
                         </nav>
                       </span>
@@ -109,7 +109,7 @@ export default async function Switch1Page() {
                           </g> 
                           </svg> <p className="float-left small-font text-red-600">Nintendo Switch 1</p><p className="float-left pl-[1em]"> - </p> 
                           {bestswitch.deals.map((deal) => (                               
-                              <img key={deal.id} width="20px" src={bestswitch.logoStore} className="ml-2 h-[25px] float-left" title={deal.storeName}/>                                
+                              <img key={deal.id} width="20px" src={bestswitch.logoStore} className="ml-2 h-[25px] float-left circle-image" title={deal.storeName}/>                                
                             ))}
                         </nav>
                     </span>

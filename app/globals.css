@@ -159,6 +159,9 @@ body {
   grid-column: span 1;
   margin: 2rem;
 }
+.circle-image{
+  border-radius: 50%;
+}
 
 
 
