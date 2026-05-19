@@ -75,7 +75,7 @@ export default async function Switch1Page() {
                     </AccordionTrigger>
                     <AccordionTrigger className="with-row-price h-[100%] float-left">
                       {newsswitch.deals.map((deal) => (
-                      <span key={deal.id} className="width-price-value flex float-right text-green-600">${deal.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+                      <span key={deal.id} className="width-price-value flex float-right text-green-600 mr-[6px]">${deal.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
                       ))}
                       {newsswitch.deals.map((deal) => (
                         deal.discountPercentage>0 ?

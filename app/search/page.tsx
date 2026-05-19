@@ -8,6 +8,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Link from "next/link";
 import { getTiendas, getPlatforms } from "@/lib/search-handler";
 import Footer from "@/components/footer";
+import Slider from '@/components/price-range';
+//import { Slider as SliderPrimitive } from 'radix-ui';
+
 
 export default async function GameSearch({searchParams}:{
     searchParams?:{
@@ -16,6 +19,8 @@ export default async function GameSearch({searchParams}:{
         precio?: string;
         t?: string;
         pf: string;
+        p1: string;
+        p2: string;
     }
 }){
     
@@ -24,8 +29,11 @@ export default async function GameSearch({searchParams}:{
     const shopval = searchParams?.t || '';
     const page = searchParams?.page ? parseInt(searchParams.page) : 1;
     const platform = searchParams?.pf ? parseInt(searchParams.pf) : 0;
+    const p1 = searchParams?.p1 ? searchParams.p1 : '0';
+    const p2 = searchParams?.p2 ? searchParams.p2 : '130000';
     const tiendas = await getTiendas();
     const platforms = await getPlatforms();
+    
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -41,80 +49,10 @@ export default async function GameSearch({searchParams}:{
                     <div className="w-[100%] mt-12 text-secondary-foreground">
                         <Card className="bg-squirtle-gray rounded-md shadow-[0_2px_10px] shadow-black/5 border-0 pos-sticky">
                             <CardHeader>
-                                <CardContent className="medium-bold text-secondary-foreground">
-                                    <div className="flex">
-                                        Precio
-                                    </div>
-                                    <div className="soft-bold w-[100%] block ">
-                                        { priceval=='5-8' || priceval=='' ? ( 
-                                        <div className="w-[100%] float-left">
-                                            {priceval=='' ?
-                                            <a href={"?query="+query+"&precio=5-8"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">$5.000 a $8.000</a>
-                                            : <a href={"?query="+query+"&precio=5-8"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$5.000 a $8.000</a>
-                                            }
-                                        </div>
-                                        ): ""}
-                                        { priceval=='8-10' || priceval=='' ? ( 
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=8-10"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">$8.000 a $10.000</a>
-                                            : <a href={"?query="+query+"&precio=8-10"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$8.000 a $10.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval=='10-15' || priceval=='' ? (
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=10-15"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">$10.000 a $15.000</a>
-                                            : <a href={"?query="+query+"&precio=10-15"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$10.000 a $15.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval=='15-20' || priceval=='' ? (
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=15-20"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">$15.000 a $20.000</a>
-                                            : <a href={"?query="+query+"&precio=15-20"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$15.000 a $20.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval=='20-30' || priceval=='' ? (
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=20-30"+"&t="+shopval+"&pf="+platform} className="hover:text-accent ">$20.000 a $30.000</a>
-                                            : <a href={"?query="+query+"&precio=20-30"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$20.000 a $30.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval=='30-40' || priceval=='' ? (
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ? 
-                                            <a href={"?query="+query+"&precio=30-40"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">$30.000 a $40.000</a>
-                                            : <a href={"?query="+query+"&precio=30-40"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">$30.000 a $40.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval=='40-100' || priceval=='' ? (
-                                        <div className="w-[100%] float-left">
-                                            { priceval=='' ?
-                                            <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent">más de $40.000</a>
-                                            : <a href={"?query="+query+"&precio=40-100"+"&t="+shopval+"&pf="+platform} className="hover:text-accent font-medium">más de $40.000</a>
-                                            }
-                                        </div>
-                                        ):""}
-
-                                        { priceval!='' ? (
-                                        <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&t="+shopval} className="hover:text-accent"> &larr; Limpiar Filtro  </a>
-                                        </div>
-                                        ):""}
-                                    </div>
-                                    <div className="w-[100%] block mt-3 float-left">
+                                <CardContent className="medium-bold text-secondary-foreground">  
+                                    <Slider price_init={p1} price_end={p2}></Slider>
+                                    
+                                    <div className="w-[100%] block mt-4 float-left">
                                         Tienda
                                     </div>
                                     <div className="soft-bold w-[100%] block ">
@@ -122,14 +60,14 @@ export default async function GameSearch({searchParams}:{
                                         tienda.id.toString()==shopval || shopval=='' ?     
                                         <div key={index} className="w-[100%] float-left">
                                             {shopval=='' ?
-                                            <a href={"?query="+query+"&precio="+priceval+"&t="+tienda.id+"&pf="+platform} className="hover:text-accent"> {tienda.nombre} </a>
-                                            : <a href={"?query="+query+"&precio="+priceval+"&t="+tienda.id+"&pf="+platform} className="hover:text-accent font-medium"> {tienda.nombre} </a>
+                                            <a href={"?query="+query+"&p1="+p1+"&p2="+p2+"&t="+tienda.id+"&pf="+platform} className="hover:text-accent"> {tienda.nombre} </a>
+                                            : <a href={"?query="+query+"&p1="+p1+"&p2="+p2+"&t="+tienda.id+"&pf="+platform} className="hover:text-accent font-normal"> {tienda.nombre} </a>
                                             }
                                         </div>
                                         : "" ))}
                                         { shopval!='' ? (
                                         <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&precio="+priceval} className="hover:text-accent"> &larr; Limpiar Filtro </a>
+                                            <a href={"?query="+query+"&p1="+p1+"&p2="+p2} className="hover:text-accent"> &larr; Limpiar Filtro </a>
                                         </div>
                                         ):""}
                                     </div>
@@ -142,14 +80,14 @@ export default async function GameSearch({searchParams}:{
                                          plat.id==platform || platform==0 ?     
                                         <div key={index} className="w-[100%] float-left">
                                             { platform==0 ? 
-                                            <a href={"?query="+query+"&precio="+priceval+"&t="+shopval+"&pf="+plat.id} className="hover:text-accent "> {plat.nombre} </a>
-                                           :  <a href={"?query="+query+"&precio="+priceval+"&t="+shopval+"&pf="+plat.id} className="hover:text-accent font-medium"> {plat.nombre} </a>
+                                            <a href={"?query="+query+"&p1="+p1+"&p2="+p2+"&t="+shopval+"&pf="+plat.id} className="hover:text-accent "> {plat.nombre} </a>
+                                           :  <a href={"?query="+query+"&p1="+p1+"&p2="+p2+"&t="+shopval+"&pf="+plat.id} className="hover:text-accent font-normal"> {plat.nombre} </a>
                                             }
                                         </div>
                                         : "" ))}
                                         { platform!=0 ? (
                                         <div className="w-[100%] float-left">
-                                            <a href={"?query="+query+"&precio="+priceval+"&t="+shopval} className="hover:text-accent"> &larr; Limpiar Filtro </a>
+                                            <a href={"?query="+query+"&p1="+p1+"&p2="+p2+"&t="+shopval} className="hover:text-accent"> &larr; Limpiar Filtro </a>
                                         </div>
                                         ):""}
                                     </div>
@@ -159,7 +97,7 @@ export default async function GameSearch({searchParams}:{
                     </div>
                     <div className="col-span-3 ">
                         <h3 className="text-3xl font-bold medium-font text-secondary-foreground mb-2">Resultado:</h3>
-                        <Table query={query} price={priceval} shop={shopval} page={page} platform={platform}/>
+                        <Table query={query} priceinit={p1} priceend={p2} shop={shopval} page={page} platform={platform}/>
                     </div>
                 </div>
                 

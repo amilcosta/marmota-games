@@ -15,9 +15,13 @@ export default function SearchVideogame({placeholder}: { placeholder:string }){
         
         const params = new URLSearchParams(searchParams);
         if(term){
+            if(term.length<5){
+                params.delete('page');
+            }
             params.set('query', term);
         }else{
             params.delete('query');
+            params.delete('page');
         }
         replace(`${pathname}?${params.toString()}`);
     }, 400);
@@ -32,4 +36,3 @@ export default function SearchVideogame({placeholder}: { placeholder:string }){
         </div>
     )
 }
-//export default SearchVideogame;

@@ -39,27 +39,6 @@ export interface PlaformDTO {
   nombre: string,
 }
 
-/*export default async function handler(req, res) {
-  const { term } = req.query;
-
-  if (!term) {
-    return res.status(400).json({ error: 'Search term is required' });
-  }
-
-  try {
-
-    const client = await pool.connect();
-    //const {rows}  = await client.query('')
-
-    const result = await client.query(
-      'SELECT * FROM "JUEGO" j WHERE nombre ILIKE $1 ',
-      [`%${term}%`]
-    );
-    res.status(200).json(result.rows);
-  } catch (error) {
-    res.status(500).json({ error: 'Database query failed' });
-  }
-}*/
 export async function getGamesDTO(juegoName: string, prices: string[], tienda: number, page: number, platform: number): Promise<GameDealDTO[]> {
 
 
@@ -184,7 +163,7 @@ export async function getGamesDTO(juegoName: string, prices: string[], tienda: n
 
       gamesMap.set(row.idJuego+'_'+row.store_id+'_'+row.idconsola , {
           id: row.idJuego,
-          title: row.nombrereal ? row.nombrereal : row.nombre,
+          title: row.nombre,
           description: row.description,
           genre: listaGeneros,
           platform: row.platform,
