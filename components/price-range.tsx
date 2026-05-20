@@ -18,6 +18,7 @@ export default function PriceRange({price_init, price_end}: { price_init:string,
             const params = new URLSearchParams(searchParams);
             params.set('p1', value[0].toString());
             params.set('p2', value[1].toString());
+            params.delete('page');
             replace(`${pathname}?${params.toString()}`);
         }, 1000); // 2 seconds delay
 
